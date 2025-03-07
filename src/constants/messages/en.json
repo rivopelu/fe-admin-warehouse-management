@@ -8,5 +8,6 @@
   "password" : "password",
   "insert_password" : "insert password",
   "sign_in" : "sign in",
-  "forgot_password" : "forgot password"
+  "forgot_password" : "forgot password",
+  "warehouse" : "warehouse"
 }

@@ -4,6 +4,7 @@ import { PAGE_TYPE_ENUM } from '../enums/page-type-enum.ts';
 import HomePage from '../pages/home/HomePage.tsx';
 import SignInPage from '../pages/auth/SignInPage.tsx';
 import TestPage from '../pages/TestPage.tsx';
+import WarehousePage from '../pages/warehouse/WarehousePage.tsx';
 
 export const routesList: IRouteList[] = [
   {
@@ -15,6 +16,11 @@ export const routesList: IRouteList[] = [
     route: ROUTES.TEST(),
     type: PAGE_TYPE_ENUM.PRIMARY,
     elements: TestPage,
+  },
+  {
+    route: ROUTES.WAREHOUSE(),
+    type: PAGE_TYPE_ENUM.PRIMARY,
+    elements: WarehousePage,
   },
 ];
 
