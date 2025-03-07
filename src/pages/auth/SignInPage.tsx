@@ -17,7 +17,13 @@ export default function SignInPage() {
         <div></div>
         <Flex align={'center'} justify={'center'} className={'min-h-screen'} direction={'col'}>
           <FormikProvider value={page.formik}>
-            <form className={'w-sm'}>
+            <form
+              className={'w-sm'}
+              onSubmit={(e) => {
+                e.preventDefault();
+                page.formik.handleSubmit();
+              }}
+            >
               <Grid gap={'md'}>
                 <div className={'mb-8'}>
                   <BrandLogo />
@@ -28,14 +34,16 @@ export default function SignInPage() {
                   name={'password'}
                   label={t('password')}
                   placeholder={t('insert_password')}
-                  type={page.showPassword ? "text" : "password"}
+                  type={page.showPassword ? 'text' : 'password'}
                   endIcon={
-                    <div className={"cursor-pointer text-slate-700"} onClick={() => page.setShowPassword((e) => !e)}>
+                    <div className={'cursor-pointer text-slate-700'} onClick={() => page.setShowPassword((e) => !e)}>
                       {!page.showPassword ? <MdVisibility /> : <MdVisibilityOff />}
                     </div>
                   }
                 />
-                <div className={"text-primary-main hover:underline hover:text-primary-dark cursor-pointer"}>{t("forgot_password")}</div>
+                <div className={'text-primary-main hover:underline hover:text-primary-dark cursor-pointer'}>
+                  {t('forgot_password')}
+                </div>
                 <Button className={'uppercase'}>{t('sign_in')}</Button>
               </Grid>
             </form>
