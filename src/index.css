@@ -19,6 +19,7 @@ html, body {
     --color-primary-main: #004e52;
     --color-primary-dark: #003639;
     --color-primary-light: #007A80;
+    --color-base-background: #F9FAFB;
 
     --font-sans: Inter, ui-sans-serif, system-ui, sans-serif, Apple Color Emoji,
     Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
