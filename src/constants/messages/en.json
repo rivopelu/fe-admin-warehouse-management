@@ -9,5 +9,8 @@
   "insert_password" : "insert password",
   "sign_in" : "sign in",
   "forgot_password" : "forgot password",
-  "warehouse" : "warehouse"
+  "warehouse" : "warehouse",
+  "good_morning" : "good morning",
+  "good_afternoon" : "good afternoon",
+  "good_evening" : "good evening"
 }

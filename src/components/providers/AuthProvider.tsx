@@ -6,7 +6,7 @@ import { ENDPOINT } from '../../constants/endpoint.ts';
 import { BaseResponse } from '../../types/data/IResModel.ts';
 import { HttpService } from '../../services/http.service.ts';
 import { ROUTES } from '../../routes/routes.ts';
-import { AuthContext } from './AuthContext.tsx';
+import { AuthContext } from '../../context/AuthContext.tsx';
 import ErrorService from '../../services/error.service.ts';
 import { IResSignIn } from '../../types/data/IResSignIn.ts';
 import { IResGetMe } from '../../types/data/IResGetMe.ts';

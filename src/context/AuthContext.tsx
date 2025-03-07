@@ -1,5 +1,5 @@
 import { createContext } from 'react';
-import { IAuthProviderProps } from './AuthProvider.tsx';
+import { IAuthProviderProps } from '../components/providers/AuthProvider.tsx';
 
 export const AuthContext = createContext<IAuthProviderProps>({
   loginAction: () => {},

@@ -1,8 +1,10 @@
+import PageContainer from '../../components/atoms/PageContainer.tsx';
+
 const WarehousePage = () => {
   return (
-    <div>
+    <PageContainer>
       <h1>HELLO WAREHOUSE</h1>
-    </div>
+    </PageContainer>
   );
 };
 

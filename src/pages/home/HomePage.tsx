@@ -6,6 +6,7 @@ import { ENDPOINT } from '../../constants/endpoint.ts';
 import { BaseResponse } from '../../types/data/IResModel.ts';
 import { IResGetMe } from '../../types/data/IResGetMe.ts';
 import ErrorService from '../../services/error.service.ts';
+import PageContainer from '../../components/atoms/PageContainer.tsx';
 
 export default function HomePage() {
   const auth = useAuth();
@@ -24,8 +25,9 @@ export default function HomePage() {
 
   return (
     <div>
-      <h1>HOME PAGE</h1>
-      <Button onClick={() => auth.logOut()}>LOGOUT</Button>
+      <PageContainer>
+        <Button onClick={() => auth.logOut()}>LOGOUT</Button>
+      </PageContainer>
     </div>
   );
 }
