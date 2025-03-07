@@ -1,8 +1,10 @@
+import { RoutesBuilder } from './components/molecules/RoutesBuilder.tsx';
+
 function App() {
   return (
-    <div>
-      <h1>HELLO WORLD</h1>
-    </div>
+    <>
+      <RoutesBuilder />
+    </>
   );
 }
 
