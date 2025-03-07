@@ -6,5 +6,7 @@
   "email" : "email",
   "insert_email" : "insert email",
   "password" : "password",
-  "insert_password" : "insert password"
+  "insert_password" : "insert password",
+  "sign_in" : "sign in",
+  "forgot_password" : "forgot password"
 }
