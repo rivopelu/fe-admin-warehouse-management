@@ -1,0 +1,10 @@
+{
+  "validation": {
+    "required": "{{name}} is required",
+    "min": "{{name}} must be greater than or equal to 1"
+  },
+  "email" : "email",
+  "insert_email" : "insert email",
+  "password" : "password",
+  "insert_password" : "insert password"
+}

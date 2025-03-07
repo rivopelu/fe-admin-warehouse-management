@@ -6,6 +6,7 @@ import { FormikProvider } from 'formik';
 import { useSignInPage } from './useSignInPage.ts';
 import Button from '../../components/atoms/Button.tsx';
 import { BrandLogo } from '../../components/atoms/BrandLogo.tsx';
+import { t } from 'i18next';
 
 export default function SignInPage() {
   const page = useSignInPage();
@@ -20,8 +21,8 @@ export default function SignInPage() {
                 <div className={'mb-8'}>
                   <BrandLogo />
                 </div>
-                <InputText id={'email'} name={'email'} />
-                <InputText id={'password'} name={'password'} />
+                <InputText id={'email'} name={'email'} label={t('email')} placeholder={t('insert_email')} />
+                <InputText id={'password'} name={'password'} label={t('password')} placeholder={t('insert_password')} />
                 <Button>SIGN IN</Button>
               </Grid>
             </form>
