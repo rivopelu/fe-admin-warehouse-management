@@ -10,7 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^2.6.0",
     "@tailwindcss/vite": "^4.0.11",
+    "axios": "^1.8.2",
     "formik": "^2.4.6",
     "i18next": "^24.2.2",
     "react": "^19.0.0",
