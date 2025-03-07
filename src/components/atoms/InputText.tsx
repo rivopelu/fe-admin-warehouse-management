@@ -33,7 +33,7 @@ export default function InputText(props: IProps) {
           type={props.type || 'text'}
           placeholder={props.placeholder || 'Masukkan teks...'}
           className={twMerge(
-            'py-2 px-3 w-full duration-300 bg-white outline-2 outline-slate-300 rounded-md',
+            'h-[40px] px-3 w-full duration-300 bg-white outline-2 outline-slate-300 rounded-md',
             'focus:outline-black/50 focus:bg-primary-main/5',
             props.startIcon ? 'pl-9' : '',
             props.endIcon ? 'pr-9' : '',

@@ -14,8 +14,8 @@ export default function SignInPage() {
         <div>HELLO</div>
         <Flex align={'center'} justify={'center'} className={'min-h-screen'}>
           <FormikProvider value={page.formik}>
-            <form>
-              <Grid>
+            <form className={'w-sm'}>
+              <Grid gap={'md'}>
                 <InputText id={'email'} name={'email'} />
                 <InputText id={'password'} name={'password'} />
                 <Button>SIGN IN</Button>

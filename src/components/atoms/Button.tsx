@@ -27,9 +27,9 @@ export default function Button(props: IProps) {
   function checkSize() {
     switch (props.size) {
       case 'sm':
-        return 'py-0 px-1 text-sm';
+        return 'h-[32px] text-sm';
       default:
-        return 'py-1 px-2 text-base';
+        return 'h-[40px]';
     }
   }
 
