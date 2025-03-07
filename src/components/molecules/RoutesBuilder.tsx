@@ -2,9 +2,11 @@ import { Route, Routes } from 'react-router-dom';
 import { publicRoutesList, routesList } from '../../routes/routes-list.ts';
 import { MainProviders } from '../providers/MainProviders.tsx';
 import NotFoundPage from '../../pages/NotFoundPage.tsx';
+import { useAuth } from '../../hooks/useAuth.ts';
 
 export function RoutesBuilder() {
-  const token = null;
+  const auth = useAuth();
+  const token = auth.token;
   return (
     <Routes>
       {token

@@ -1,12 +1,13 @@
 import axios, { AxiosError } from 'axios';
 import { useAuth } from '../hooks/useAuth.ts';
+import toast from 'react-hot-toast';
 
 export default class ErrorService {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   private auth = useAuth();
 
   private handleSnackbar(message: string) {
-    alert(message);
+    toast.error(message);
   }
 
   public fetchApiError(error: AxiosError<any>) {

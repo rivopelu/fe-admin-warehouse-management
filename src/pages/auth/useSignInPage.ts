@@ -9,8 +9,8 @@ export function useSignInPage() {
   const auth = useAuth();
 
   const initValue: IReqSignIn = {
-    password: '',
-    email: '',
+    password: 'admin',
+    email: 'admin@gmail.com',
   };
   const formik = useFormik({
     initialValues: initValue,

@@ -22,6 +22,7 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
   const errorService = new ErrorService();
 
   function loginAction(data: IReqSignIn, setLoading: (loading: boolean) => void) {
+    setLoading(true);
     httpService
       .POST(ENDPOINT.SIGN_IN(), data)
       .then((res: BaseResponse<IResSignIn>) => {
