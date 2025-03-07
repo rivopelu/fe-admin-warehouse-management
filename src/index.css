@@ -1,1 +1,41 @@
 @import "tailwindcss";
+
+
+@layer base {
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--color-gray-200, currentColor);
+    }
+}
+
+
+@theme {
+    --color-primary-main: #004e52;
+    --color-primary-dark: #003639;
+    --color-primary-light: #007A80;
+
+    --font-sans: Inter, ui-sans-serif, system-ui, sans-serif, Apple Color Emoji,
+    Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+
+
+    --spacing-sidebar-width: 300px;
+    --spacing-top-bar-height: 60px;
+}
+
+
+.codex-editor {
+    height: 100%;
+}
+
+.ce-block__content,
+.ce-toolbar__content {
+    max-width: 100% !important;
+}
+
+.ce-paragraph {
+    font-size: 1.125rem; /* Sesuaikan dengan ukuran */
+}
+

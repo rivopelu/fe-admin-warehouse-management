@@ -1,5 +1,4 @@
 export const ROUTES = {
-  SIGN_IN: () => `/auth/signin`,
+  SIGN_IN: () => `/auth/sign-in`,
   HOME: () => `/`,
-  NOT_FOUND: () => `*`,
 };
