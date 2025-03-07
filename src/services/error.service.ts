@@ -1,13 +1,17 @@
 import axios, { AxiosError } from 'axios';
+import { useAuth } from '../hooks/useAuth.ts';
 
 export default class ErrorService {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  private auth = useAuth();
+
   private handleSnackbar(message: string) {
     alert(message);
   }
 
   public fetchApiError(error: AxiosError<any>) {
     if (error?.response?.status === 401) {
-      alert('SIGN OUT');
+      this.auth.logOut();
     } else {
       let message;
       if (axios.isAxiosError(error) && error.response) {

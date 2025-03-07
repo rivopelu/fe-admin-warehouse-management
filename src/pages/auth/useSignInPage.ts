@@ -1,10 +1,12 @@
 import { useFormik } from 'formik';
 import { IReqSignIn } from '../../types/request/IReqSignIn.ts';
 import { useState } from 'react';
+import { useAuth } from '../../hooks/useAuth.ts';
 
 export function useSignInPage() {
-
   const [showPassword, setShowPassword] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
+  const auth = useAuth();
 
   const initValue: IReqSignIn = {
     password: '',
@@ -13,8 +15,8 @@ export function useSignInPage() {
   const formik = useFormik({
     initialValues: initValue,
     onSubmit: (values) => {
-      alert(JSON.stringify(values));
+      auth.loginAction(values, setLoading);
     },
   });
-  return { formik, setShowPassword, showPassword };
+  return { formik, setShowPassword, showPassword, loading };
 }

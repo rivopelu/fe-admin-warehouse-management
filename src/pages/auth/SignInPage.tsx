@@ -44,7 +44,9 @@ export default function SignInPage() {
                 <div className={'text-primary-main hover:underline hover:text-primary-dark cursor-pointer'}>
                   {t('forgot_password')}
                 </div>
-                <Button className={'uppercase'}>{t('sign_in')}</Button>
+                <Button loading={page.loading} className={'uppercase'}>
+                  {t('sign_in')}
+                </Button>
               </Grid>
             </form>
           </FormikProvider>
