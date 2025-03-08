@@ -5,6 +5,8 @@ import { useWarehousePage } from './useWarehousePage.ts';
 import Table from '../../components/molecules/Table.tsx';
 import { ITableColumn } from '../../types/data/ITableColumn.ts';
 import { IResListWarehouse } from '../../types/response/IResListWarehouse.ts';
+import Button from '../../components/atoms/Button.tsx';
+import Flex from '../../components/atoms/Flex.tsx';
 
 const WarehousePage = () => {
   const page = useWarehousePage();
@@ -21,9 +23,14 @@ const WarehousePage = () => {
   ];
   return (
     <PageContainer>
-      <PageTitle title={t('warehouse_management')} breadcrumb={page.dataBreadcrumb} />
+      <Flex justify={'between'}>
+        <PageTitle title={t('warehouse_management')} breadcrumb={page.dataBreadcrumb} />
+        <div>
+          <Button>{t('create_warehouse')}</Button>
+        </div>
+      </Flex>
 
-      <Table column={tableColumn} data={page.listData} />
+      <Table loading={page.loading} column={tableColumn} data={page.listData} />
     </PageContainer>
   );
 };

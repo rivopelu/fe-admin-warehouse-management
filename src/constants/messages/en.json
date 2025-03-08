@@ -14,5 +14,7 @@
   "good_afternoon" : "good afternoon",
   "good_evening" : "good evening",
   "not_found_result" : "Not found result",
-  "warehouse_management" : "Warehouse management"
+  "warehouse_management" : "Warehouse management",
+  "create_warehouse" : "create warehouse"
+
 }

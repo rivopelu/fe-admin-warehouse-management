@@ -12,7 +12,7 @@ export function useWarehousePage() {
   const warehouseAction = new WarehouseAction();
 
   const Warehouse: IWarehouseSlice = useAppSelector((state) => state.Warehouse);
-
+  const loading = Warehouse?.listWarehouse?.loading;
   const [listData, setListData] = useState<IResListWarehouse[]>([]);
 
   useEffect(() => {
@@ -40,5 +40,5 @@ export function useWarehousePage() {
     },
   ];
 
-  return { dataBreadcrumb, listData };
+  return { dataBreadcrumb, listData, loading };
 }

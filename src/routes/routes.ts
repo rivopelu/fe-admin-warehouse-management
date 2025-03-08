@@ -1,6 +1,7 @@
 export const ROUTES = {
   SIGN_IN: () => `/auth/sign-in`,
-  WAREHOUSE : () => `/warehouse`,
+  WAREHOUSE: () => `/warehouse`,
+  CREATE_WAREHOUSE: () => `/warehouse/create`,
   HOME: () => `/`,
   TEST: () => `/test`,
 };
