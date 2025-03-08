@@ -1,6 +1,7 @@
 import { twMerge } from 'tailwind-merge';
 import { ChangeEventHandler, FocusEventHandler, HTMLInputTypeAttribute, ReactNode } from 'react';
 import { useFormikContext, FormikErrors, FormikTouched } from 'formik';
+import LabelInputField from './LabelInputField.tsx';
 
 export default function InputText(props: IProps) {
   const formik = useFormikContext<any>();
@@ -12,11 +13,7 @@ export default function InputText(props: IProps) {
 
   return (
     <div className="grid gap-1">
-      {props.label && (
-        <label className="text-sm capitalize" htmlFor={props.id}>
-          {props.label} {props.required && <span className="text-red-700">*</span>}
-        </label>
-      )}
+      {props.label && <LabelInputField label={props.label} required={props.required} />}
       <div className={twMerge('relative flex items-center bg-white')}>
         {props.startIcon && <span className="absolute left-3 flex items-center pr-3">{props.startIcon}</span>}
         <input
@@ -31,7 +28,7 @@ export default function InputText(props: IProps) {
             }
           }}
           type={props.type || 'text'}
-          placeholder={props.placeholder || 'Masukkan teks...'}
+          placeholder={props.placeholder || ''}
           className={twMerge(
             'h-[40px] px-3 w-full duration-300 bg-white outline-2 outline-slate-300 rounded-md',
             'focus:outline-black/50 focus:bg-primary-main/5',

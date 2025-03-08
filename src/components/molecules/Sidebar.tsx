@@ -11,7 +11,7 @@ export default function Sidebar() {
     <div className={'bg-orange-300 w-sidebar-width'}>
       <div className={'fixed top-0 h-screen border-r w-sidebar-width bg-white'}>
         <div className={'h-top-bar-height border-b px-4 flex items-center'}>
-          <BrandLogo className={'w-38'} />
+          <BrandLogo className={'w-28'} />
         </div>
         <div className={'p-4 grid gap-1'}>
           {sidebarMenuList.map((item, index) => {

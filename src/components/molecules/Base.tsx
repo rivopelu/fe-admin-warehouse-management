@@ -10,8 +10,8 @@ export function Base(props: IProps) {
         return (
           <div className={'flex  min-h-screen'}>
             <Sidebar />
-            <div className={"flex-1"}>
-              <TopBar/>
+            <div className={'flex-1'}>
+              <TopBar />
               <div className={'flex-1'}>{props.children}</div>
             </div>
           </div>
@@ -20,7 +20,7 @@ export function Base(props: IProps) {
         return <>{props.children}</>;
     }
   }
-  return <>{checkPage()}</>;
+  return <main className={'bg-base-background min-h-screen'}>{checkPage()}</main>;
 }
 
 interface IProps {
