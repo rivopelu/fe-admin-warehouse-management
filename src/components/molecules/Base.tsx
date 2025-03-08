@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
 
 export function Base(props: IProps) {
-  const location = useLocation(); // Dapatkan path saat ini
+  const location = useLocation();
 
   function checkPage() {
     switch (props.type) {
@@ -18,7 +18,7 @@ export function Base(props: IProps) {
               <TopBar />
               <AnimatePresence mode="wait">
                 <motion.div
-                  key={location.pathname} // Pastikan animasi berjalan saat route berubah
+                  key={location.pathname}
                   className="flex-1"
                   initial={{ opacity: 0, y: 5 }}
                   animate={{ opacity: 1, y: 0 }}
