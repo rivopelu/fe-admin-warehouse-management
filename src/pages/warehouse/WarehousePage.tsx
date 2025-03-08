@@ -4,6 +4,10 @@ import { ILabelValue } from '../../types/data/ILabelValue.ts';
 import { useEffect, useState } from 'react';
 import InputText from '../../components/atoms/InputText.tsx';
 import { Card, CardBody } from '../../components/atoms/Card.tsx';
+import { PageTitle } from '../../components/atoms/PageTitle.tsx';
+import { t } from 'i18next';
+import { IBreadcrumbData } from '../../types/data/IBreadcrumbData.ts';
+import { ROUTES } from '../../routes/routes.ts';
 
 const WarehousePage = () => {
   const [selectedValue, setSelectedValue] = useState<string>();
@@ -25,11 +29,22 @@ const WarehousePage = () => {
     },
   ];
 
+  const dataBreadcrumb: IBreadcrumbData[] = [
+    {
+      label: t('home'),
+      path: ROUTES.HOME(),
+    },
+    {
+      label: t('warehouse'),
+    },
+  ];
+
   useEffect(() => {
     console.log(selectedValue);
   }, [selectedValue]);
   return (
     <PageContainer>
+      <PageTitle title={t('warehouse_management')} breadcrumb={dataBreadcrumb} />
       <Card>
         <CardBody>
           <h1>HELLO WAREHOUSE</h1>

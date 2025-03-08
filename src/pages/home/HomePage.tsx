@@ -7,6 +7,8 @@ import { BaseResponse } from '../../types/data/IResModel.ts';
 import { IResGetMe } from '../../types/data/IResGetMe.ts';
 import ErrorService from '../../services/error.service.ts';
 import PageContainer from '../../components/atoms/PageContainer.tsx';
+import { PageTitle } from '../../components/atoms/PageTitle.tsx';
+import { t } from 'i18next';
 
 export default function HomePage() {
   const auth = useAuth();
@@ -26,6 +28,7 @@ export default function HomePage() {
   return (
     <div>
       <PageContainer>
+        <PageTitle title={t('home')} />
         <Button onClick={() => auth.logOut()}>LOGOUT</Button>
       </PageContainer>
     </div>
