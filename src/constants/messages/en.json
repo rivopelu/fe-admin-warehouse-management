@@ -3,6 +3,14 @@
     "required": "{{name}} is required",
     "min": "{{name}} must be greater than or equal to 1"
   },
+  "privilege" : {
+    "LIST_WAREHOUSE" :"List Warehouse",
+    "DELETE_WAREHOUSE" : "Delete Warehouse",
+    "DETAIL_WAREHOUSE" : "Detail Warehouse",
+    "EDIT_WAREHOUSE" : "Edit Warehouse",
+    "CREATE_WAREHOUSE" :  "Create Warehouse",
+    "SETTING_PRIVILEGE" : "Setting privilege"
+  },
   "email" : "email",
   "insert_email" : "insert email",
   "password" : "password",
@@ -17,6 +25,7 @@
   "warehouse_management" : "Warehouse management",
   "create_warehouse" : "create warehouse",
   "privilege_setting" : "Privilege Setting",
-  "setting" : "setting"
+  "setting" : "setting",
+  "submit" : "submit"
 
 }

@@ -3,4 +3,5 @@ export const ENDPOINT = {
   GET_ME: () => `/account/v1/me`,
   LIST_WAREHOUSE: () => `/warehouse/v1/list`,
   LIST_PRIVILEGES: () => `/v1/list-privileges`,
+  ROLE_PRIVILEGES: () => `/v1/role-privilege`,
 };
