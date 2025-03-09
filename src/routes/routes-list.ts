@@ -5,6 +5,7 @@ import HomePage from '../pages/home/HomePage.tsx';
 import SignInPage from '../pages/auth/SignInPage.tsx';
 import TestPage from '../pages/TestPage.tsx';
 import WarehousePage from '../pages/warehouse/WarehousePage.tsx';
+import CreateWarehousePage from '../pages/warehouse/CreateWarehousePage.tsx';
 
 export const routesList: IRouteList[] = [
   {
@@ -21,6 +22,11 @@ export const routesList: IRouteList[] = [
     route: ROUTES.WAREHOUSE(),
     type: PAGE_TYPE_ENUM.PRIMARY,
     elements: WarehousePage,
+  },
+  {
+    route: ROUTES.CREATE_WAREHOUSE(),
+    type: PAGE_TYPE_ENUM.PRIMARY,
+    elements: CreateWarehousePage,
   },
 ];
 

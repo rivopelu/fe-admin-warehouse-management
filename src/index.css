@@ -10,7 +10,7 @@ html, body {
     ::before,
     ::backdrop,
     ::file-selector-button {
-        border-color: var(--color-gray-200, currentColor);
+        border-color: var(--color-gray-100, currentColor);
     }
 }
 
@@ -30,16 +30,4 @@ html, body {
 }
 
 
-.codex-editor {
-    height: 100%;
-}
-
-.ce-block__content,
-.ce-toolbar__content {
-    max-width: 100% !important;
-}
-
-.ce-paragraph {
-    font-size: 1.125rem; /* Sesuaikan dengan ukuran */
-}
 
