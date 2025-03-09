@@ -18,7 +18,7 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
   const getUser = rawUser ? JSON.parse(rawUser) : undefined;
   const [token, setToken] = useState<string | undefined>(getToken || undefined);
   const [user, setUser] = useState<IResGetMe | undefined>(getUser || undefined);
-  const [privileges, setPrivileges] = useState<PRIVILEGE[]>([])
+  const [privileges, setPrivileges] = useState<PRIVILEGE[]>([]);
   const navigate = useNavigate();
   const httpService = new HttpService();
   const errorService = new ErrorService();
@@ -31,13 +31,13 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
         setLoading(false);
         const resToken = res.data.response_data.access_token;
         const userData = res.data.response_data.account_data;
-        const privilege : PRIVILEGE[] = res.data.response_data.privileges;
+        const privilege: PRIVILEGE[] = res.data.response_data.privileges;
         setToken(resToken);
         setUser(userData);
         setPrivileges(privilege);
         localStorage.setItem(LOCAL_STORAGE_KEY.ACCESS_TOKEN, resToken);
         localStorage.setItem(LOCAL_STORAGE_KEY.USER, JSON.stringify(userData));
-        localStorage.setItem(LOCAL_STORAGE_KEY.PRIVILEGES, JSON.stringify(userData));
+        localStorage.setItem(LOCAL_STORAGE_KEY.PRIVILEGES, JSON.stringify(privilege));
         navigate(ROUTES.HOME());
       })
       .catch((e) => {
@@ -48,14 +48,14 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   const logOut = () => {
     setToken(undefined);
-    setPrivileges([])
+    setPrivileges([]);
     setUser(undefined);
     localStorage.clear();
     navigate(ROUTES.SIGN_IN());
   };
 
-  function checkPrivilege(privilege : PRIVILEGE) : boolean{
-    return  privileges.includes(privilege);
+  function checkPrivilege(privilege: PRIVILEGE): boolean {
+    return privileges.includes(privilege);
   }
 
   return <AuthContext value={{ privileges, token, loginAction, logOut, user, checkPrivilege }}>{children}</AuthContext>;
@@ -68,6 +68,6 @@ export interface IAuthProviderProps {
   token?: string;
   loginAction: (data: IReqSignIn, setLoading: (data: boolean) => void) => void;
   logOut: () => void;
-  privileges : PRIVILEGE[]
-  checkPrivilege : (v  : PRIVILEGE) => boolean;
+  privileges: PRIVILEGE[];
+  checkPrivilege: (v: PRIVILEGE) => boolean;
 }
