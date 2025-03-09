@@ -4,4 +4,5 @@ export const ROUTES = {
   CREATE_WAREHOUSE: () => `/warehouse/create`,
   HOME: () => `/`,
   TEST: () => `/test`,
+  SETTING_PRIVILEGE: () => `/setting/privilege`,
 };

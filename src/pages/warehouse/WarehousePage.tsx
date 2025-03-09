@@ -9,9 +9,12 @@ import Flex from '../../components/atoms/Flex.tsx';
 import { Link } from 'react-router-dom';
 import { ROUTES } from '../../routes/routes.ts';
 import Button from '../../components/atoms/Button.tsx';
+import { useAuth } from '../../hooks/useAuth.ts';
+import { PRIVILEGE } from '../../enums/privilege-enum.ts';
 
 const WarehousePage = () => {
   const page = useWarehousePage();
+  const auth = useAuth();
   const tableColumn: ITableColumn<IResListWarehouse>[] = [
     {
       headerTitle: t('name'),
@@ -26,9 +29,13 @@ const WarehousePage = () => {
     <PageContainer>
       <Flex justify={'between'}>
         <PageTitle title={t('warehouse_management')} breadcrumb={page.dataBreadcrumb} />
-        <Link to={ROUTES.CREATE_WAREHOUSE()}>
-          <Button>{t('create_warehouse')}</Button>
-        </Link>
+        {auth.checkPrivilege(PRIVILEGE.CREATE_WAREHOUSE) ? (
+          <Link to={ROUTES.CREATE_WAREHOUSE()}>
+            <Button>{t('create_warehouse')}</Button>
+          </Link>
+        ) : (
+          <></>
+        )}
       </Flex>
 
       <Table loading={page.loading} column={tableColumn} data={page.listData} />

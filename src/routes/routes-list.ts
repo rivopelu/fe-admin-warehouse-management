@@ -7,6 +7,7 @@ import TestPage from '../pages/TestPage.tsx';
 import WarehousePage from '../pages/warehouse/WarehousePage.tsx';
 import CreateWarehousePage from '../pages/warehouse/CreateWarehousePage.tsx';
 import { PRIVILEGE } from '../enums/privilege-enum.ts';
+import SettingPagePrivileges from '../pages/settings/SettingPagePrivileges.tsx';
 
 export const routesList: IRouteList[] = [
   {
@@ -25,10 +26,15 @@ export const routesList: IRouteList[] = [
     elements: WarehousePage,
   },
   {
-    privilege : PRIVILEGE.CREATE_WAREHOUSE,
+    privilege: PRIVILEGE.CREATE_WAREHOUSE,
     route: ROUTES.CREATE_WAREHOUSE(),
     type: PAGE_TYPE_ENUM.PRIMARY,
     elements: CreateWarehousePage,
+  },
+  {
+    route: ROUTES.SETTING_PRIVILEGE(),
+    type: PAGE_TYPE_ENUM.PRIMARY,
+    elements: SettingPagePrivileges,
   },
 ];
 

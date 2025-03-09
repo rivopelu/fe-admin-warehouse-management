@@ -1,17 +1,22 @@
 import { ISideBarMenuList } from '../types/data/ISideBarMenuList.ts';
 import { ROUTES } from '../routes/routes.ts';
 import { t } from 'i18next';
-import { MdHome, MdWarehouse } from 'react-icons/md';
+import { MdHome, MdSettings, MdWarehouse } from 'react-icons/md';
 
-export const sidebarMenuList : ISideBarMenuList[] = [
+export const sidebarMenuList: ISideBarMenuList[] = [
   {
     path: ROUTES.HOME(),
     label: t('home'),
-    icon : MdHome
+    icon: MdHome,
   },
   {
     path: ROUTES.WAREHOUSE(),
     label: t('warehouse'),
-    icon : MdWarehouse
+    icon: MdWarehouse,
+  },
+  {
+    path: ROUTES.SETTING_PRIVILEGE(),
+    label: t('setting'),
+    icon: MdSettings,
   },
 ];
