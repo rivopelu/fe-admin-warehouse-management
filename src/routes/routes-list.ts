@@ -21,6 +21,7 @@ export const routesList: IRouteList[] = [
     elements: TestPage,
   },
   {
+    privilege: PRIVILEGE.LIST_WAREHOUSE,
     route: ROUTES.WAREHOUSE(),
     type: PAGE_TYPE_ENUM.PRIMARY,
     elements: WarehousePage,
@@ -32,6 +33,7 @@ export const routesList: IRouteList[] = [
     elements: CreateWarehousePage,
   },
   {
+    privilege: PRIVILEGE.SETTING_PRIVILEGE,
     route: ROUTES.SETTING_PRIVILEGE(),
     type: PAGE_TYPE_ENUM.PRIMARY,
     elements: SettingPagePrivilegesPage,
