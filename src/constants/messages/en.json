@@ -26,6 +26,7 @@
   "create_warehouse" : "create warehouse",
   "privilege_setting" : "Privilege Setting",
   "setting" : "setting",
-  "submit" : "submit"
+  "submit" : "submit",
+  "role_successfully_updated" : "Role successfully updated"
 
 }

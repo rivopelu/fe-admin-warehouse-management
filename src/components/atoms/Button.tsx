@@ -35,13 +35,15 @@ export default function Button(props: IProps) {
 
   return (
     <button
-      onClick={(e) => !props.loading && props.onClick && props?.onClick(e)}
+      onClick={(e) => !props.disable && !props.loading && props.onClick && props.onClick(e)}
       type={props.type}
+      disabled={props.disable}
       className={twMerge(
         'border-2 w-full duration-200 cursor-pointer font-semibold',
         checkVariant(),
         checkRounded(),
         checkSize(),
+        props.disable ? 'opacity-10 cursor-not-allowed' : '',
         props.className,
       )}
     >
@@ -59,4 +61,5 @@ interface IProps {
   type?: 'submit' | 'reset' | 'button';
   variant?: 'outlined' | 'solid';
   size?: 'sm' | 'default';
+  disable?: boolean;
 }
