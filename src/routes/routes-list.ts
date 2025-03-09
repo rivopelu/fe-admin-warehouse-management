@@ -7,7 +7,7 @@ import TestPage from '../pages/TestPage.tsx';
 import WarehousePage from '../pages/warehouse/WarehousePage.tsx';
 import CreateWarehousePage from '../pages/warehouse/CreateWarehousePage.tsx';
 import { PRIVILEGE } from '../enums/privilege-enum.ts';
-import SettingPagePrivileges from '../pages/settings/SettingPagePrivileges.tsx';
+import SettingPagePrivilegesPage from '../pages/settings/SettingPagePrivilegesPage.tsx';
 
 export const routesList: IRouteList[] = [
   {
@@ -34,7 +34,7 @@ export const routesList: IRouteList[] = [
   {
     route: ROUTES.SETTING_PRIVILEGE(),
     type: PAGE_TYPE_ENUM.PRIMARY,
-    elements: SettingPagePrivileges,
+    elements: SettingPagePrivilegesPage,
   },
 ];
 
