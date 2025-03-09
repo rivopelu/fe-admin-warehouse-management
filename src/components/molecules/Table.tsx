@@ -26,10 +26,10 @@ function Table(props: IProps) {
       <tbody>
         {props.loading
           ? Array.from({ length: 10 }).map((_, i) => (
-              <tr>
+              <tr key={i}>
                 {props.column.map((_, idx) => (
                   <td
-                    key={idx}
+                    key={idx + 1}
                     className={twMerge('py-3', idx === 0 && 'pl-4', i % 2 === 0 && 'bg-primary-main/5', 'border-b')}
                   >
                     {loadingRow()}

@@ -6,4 +6,6 @@ export const AuthContext = createContext<IAuthProviderProps>({
   token: undefined,
   logOut: () => {},
   user: undefined,
+  privileges : [],
+  checkPrivilege: () => false,
 });

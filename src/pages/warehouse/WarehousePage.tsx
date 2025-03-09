@@ -5,12 +5,13 @@ import { useWarehousePage } from './useWarehousePage.ts';
 import Table from '../../components/molecules/Table.tsx';
 import { ITableColumn } from '../../types/data/ITableColumn.ts';
 import { IResListWarehouse } from '../../types/response/IResListWarehouse.ts';
-import Button from '../../components/atoms/Button.tsx';
 import Flex from '../../components/atoms/Flex.tsx';
+import { Link } from 'react-router-dom';
+import { ROUTES } from '../../routes/routes.ts';
+import Button from '../../components/atoms/Button.tsx';
 
 const WarehousePage = () => {
   const page = useWarehousePage();
-
   const tableColumn: ITableColumn<IResListWarehouse>[] = [
     {
       headerTitle: t('name'),
@@ -25,9 +26,9 @@ const WarehousePage = () => {
     <PageContainer>
       <Flex justify={'between'}>
         <PageTitle title={t('warehouse_management')} breadcrumb={page.dataBreadcrumb} />
-        <div>
+        <Link to={ROUTES.CREATE_WAREHOUSE()}>
           <Button>{t('create_warehouse')}</Button>
-        </div>
+        </Link>
       </Flex>
 
       <Table loading={page.loading} column={tableColumn} data={page.listData} />

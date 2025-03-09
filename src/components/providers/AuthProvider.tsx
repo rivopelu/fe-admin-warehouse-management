@@ -54,7 +54,11 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
     navigate(ROUTES.SIGN_IN());
   };
 
-  return <AuthContext value={{ privileges, token, loginAction, logOut, user }}>{children}</AuthContext>;
+  function checkPrivilege(privilege : PRIVILEGE) : boolean{
+    return  privileges.includes(privilege);
+  }
+
+  return <AuthContext value={{ privileges, token, loginAction, logOut, user, checkPrivilege }}>{children}</AuthContext>;
 };
 
 export default AuthProvider;
@@ -65,4 +69,5 @@ export interface IAuthProviderProps {
   loginAction: (data: IReqSignIn, setLoading: (data: boolean) => void) => void;
   logOut: () => void;
   privileges : PRIVILEGE[]
+  checkPrivilege : (v  : PRIVILEGE) => boolean;
 }
