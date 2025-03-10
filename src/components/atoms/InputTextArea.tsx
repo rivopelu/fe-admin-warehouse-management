@@ -25,7 +25,7 @@ export default function InputTextarea(props: IProps) {
           rows={props.rows || 3}
           className={twMerge(
             'px-3 py-2 w-full duration-300 bg-white outline-2 outline-gray-300 rounded-md',
-            'focus:outline-black/50 focus:bg-primary-main/5',
+            'focus:outline-black/50 ',
             errorMessage ? 'outline-red-500 bg-red-100' : '',
           )}
           id={props.id}

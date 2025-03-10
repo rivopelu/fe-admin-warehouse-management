@@ -34,6 +34,11 @@
   "warehouse_address" : "Warehouse address",
   "insert_warehouse_address" : "Insert warehouse address",
   "province" : "Province",
-  "select_province" : "Select province"
-
+  "select_province" : "Select province",
+  "city" : "city",
+  "select_city" : "Select city",
+  "district" : "District",
+  "select_district" : "Select district",
+  "select_sub_district" : "Select sub district",
+  "sub_district" : "Sub district"
 }
