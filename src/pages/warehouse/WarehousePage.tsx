@@ -28,13 +28,16 @@ const WarehousePage = () => {
     },
     {
       headerTitle: '',
-      component: (e) => (
-        <Link to={ROUTES.EDIT_WAREHOUSE(e.id)}>
-          <IconButton>
-            <MdEdit />
-          </IconButton>
-        </Link>
-      ),
+      component: (e) =>
+        auth.checkPrivilege(PRIVILEGE.EDIT_WAREHOUSE) ? (
+          <Link to={ROUTES.EDIT_WAREHOUSE(e.id)}>
+            <IconButton>
+              <MdEdit />
+            </IconButton>
+          </Link>
+        ) : (
+          <></>
+        ),
     },
   ];
   return (
