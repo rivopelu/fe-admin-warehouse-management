@@ -64,8 +64,11 @@ export default function useCreateWarehousePage() {
   }, [detail]);
 
   useEffect(() => {
-    if (!id) return;
-    dispatch(warehouseAction.detailWarehouse(id)).then();
+    if (!id) {
+      formik.setValues(initState);
+    } else {
+      dispatch(warehouseAction.detailWarehouse(id)).then();
+    }
   }, [id]);
 
   function onCloseModalSubmit() {
@@ -75,11 +78,10 @@ export default function useCreateWarehousePage() {
   function onSubmit() {
     if (data) {
       setLoadingSubmit(true);
-      httpService
-        .POST(ENDPOINT.CREATE_WAREHOUSE(), data)
+      httpService[id ? 'PUT' : 'POST'](id ? ENDPOINT.EDIT_WAREHOUSE(id) : ENDPOINT.CREATE_WAREHOUSE(), data)
         .then(() => {
           setLoadingSubmit(false);
-          toast.success(t('warehouse_success_created'));
+          toast.success(t(id ? 'warehouse_success_updated' : 'warehouse_success_created'));
           navigate(ROUTES.WAREHOUSE());
         })
         .catch((e) => {

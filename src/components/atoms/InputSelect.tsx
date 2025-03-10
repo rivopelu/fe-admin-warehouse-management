@@ -1,8 +1,9 @@
-import { ChangeEventHandler, FocusEventHandler, useEffect, useState } from 'react';
+import { FocusEventHandler, useEffect, useState } from 'react';
 import Select from 'react-select';
 import { twMerge } from 'tailwind-merge';
 import LabelInputField from './LabelInputField.tsx';
 import { FormikErrors, FormikTouched, useFormikContext } from 'formik';
+import { ILabelValue } from '../../types/data/ILabelValue.ts';
 
 function InputSelect(props: IProps) {
   const formik = useFormikContext<any>();
@@ -13,16 +14,19 @@ function InputSelect(props: IProps) {
   const errorMessage: any =
     props.errorMessage ?? (errors?.[props.name] && touched?.[props.name] ? errors[props.name] : '');
 
-  const [selectedOption, setSelectedOption] = useState<{ label: string; value: any } | null>(null);
+  const [selectedOption, setSelectedOption] = useState<ILabelValue<any> | undefined>(undefined);
 
   useEffect(() => {
-    const selected = props.options.find((opt) => opt.value === props.value) || null;
-    setSelectedOption(selected);
-  }, [props.value, props.options]);
+    if (!props.options) return;
+    else if (formik.values[props.name]) {
+      const selected = props.options.find((opt) => opt.value === formik.values[props.name]) || [];
+      setSelectedOption(selected as ILabelValue<any>);
+    }
+  }, [formik.values, props.options]);
 
-  const handleChange = (option: { label: string; value: any } | null) => {
+  const handleChange = (option: ILabelValue<any>) => {
     setSelectedOption(option);
-    props.onChange?.(option ? option.value : null);
+    props.onChange?.(option ? option.value : undefined);
     if (formik) {
       formik.setFieldValue(props.name, option ? option.value : null).then();
     }
@@ -35,7 +39,7 @@ function InputSelect(props: IProps) {
         <Select
           isDisabled={props.disabled}
           className={twMerge('w-full', errorMessage ? 'border-red-500' : '', props?.className)}
-          onChange={handleChange}
+          onChange={(e) => handleChange(e as ILabelValue<any>)}
           options={props.options}
           placeholder={props.placeholder || ''}
           isClearable
@@ -67,15 +71,14 @@ function InputSelect(props: IProps) {
 export default InputSelect;
 
 interface IProps {
-  options: { label: string; value: any }[];
+  options: ILabelValue<any>[];
   label?: string;
   errorMessage?: string;
   className?: string;
-  value?: any;
   required?: boolean;
   placeholder?: string;
   name: string;
   disabled?: boolean;
   onBlur?: FocusEventHandler<HTMLInputElement>;
-  onChange?: ChangeEventHandler<HTMLInputElement>;
+  onChange?: (e: ILabelValue<any>) => void;
 }

@@ -12,7 +12,8 @@
     "SETTING_PRIVILEGE" : "Setting privilege"
   },
   "confirmation" : {
-    "title_create_warehouse" : "Are you sure create a new warehosue?"
+    "title_create_warehouse" : "Are you sure create a new warehouse?",
+    "title_edit_warehouse" : "Are you sure edit warehouse?"
   },
   "email" : "email",
   "insert_email" : "insert email",
@@ -45,5 +46,6 @@
   "select_sub_district" : "Select sub district",
   "sub_district" : "Sub district",
   "warehouse_success_created" : "warehouse success created",
-  "edit_warehouse" : "Edit warehouse"
+  "edit_warehouse" : "Edit warehouse",
+  "warehouse_success_updated" : "warehouse success updated"
 }

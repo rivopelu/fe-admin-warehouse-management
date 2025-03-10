@@ -39,7 +39,7 @@ function CreateEditWarehousePage() {
         loading={page.loadingSubmit}
         onClose={page.onCloseModalSubmit}
         open={page.showModalSubmit}
-        title={t('confirmation.title_create_warehouse')}
+        title={t(page?.id ? 'confirmation.title_edit_warehouse' : 'confirmation.title_create_warehouse')}
         img={ASSETS.IL_CONFIRMATION_SUBMIT}
       />
       <PageTitle title={t(page?.id ? 'edit_warehouse' : 'create_warehouse')} breadcrumb={breadcrumbData} />
