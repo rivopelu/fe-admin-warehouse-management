@@ -24,5 +24,5 @@ interface IProps {
   grid?: 1 | 2 | 3 | 4 | 5;
   gap?: 'xl' | 'md' | 'lg' | 'sm';
   className?: string;
-  children: JSX.Element | JSX.Element[];
+  children: JSX.Element;
 }

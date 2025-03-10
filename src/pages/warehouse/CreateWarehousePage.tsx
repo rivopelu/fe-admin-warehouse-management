@@ -12,6 +12,7 @@ import InputTextarea from '../../components/atoms/InputTextArea.tsx';
 import { InputAddressModule } from '../../components/molecules/InputAddressModule.tsx';
 import Button from '../../components/atoms/Button.tsx';
 import Grid from '../../components/atoms/Grid.tsx';
+import PopupModal from '../../components/molecules/PopupModal.tsx';
 
 function CreateWarehousePage() {
   const page = useCreateWarehousePage();
@@ -29,8 +30,20 @@ function CreateWarehousePage() {
       label: t('create_warehouse'),
     },
   ];
+
+  function bodyModalSubmit() {
+    return (
+      <Card>
+        <CardBody>
+          <h1>MODAL</h1>
+        </CardBody>
+      </Card>
+    );
+  }
+
   return (
     <PageContainer>
+      <PopupModal onClose={page.onCloseModalSubmit} component={bodyModalSubmit()} open={page.showModalSubmit} />
       <PageTitle title={t('create_warehouse')} breadcrumb={breadcrumbData} />
       <Card>
         <CardBody>

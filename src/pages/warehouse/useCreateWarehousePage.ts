@@ -2,8 +2,11 @@ import { IReqCreateWarehouse } from '../../types/request/IReqCreateWarehouse.ts'
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { t } from 'i18next';
+import { useState } from 'react';
 
 export default function useCreateWarehousePage() {
+  const [showModalSubmit, setShowModalSubmit] = useState<boolean>(true);
+
   const initState: IReqCreateWarehouse = {
     name: '',
     address: '',
@@ -26,5 +29,9 @@ export default function useCreateWarehousePage() {
     },
   });
 
-  return { formik };
+  function onCloseModalSubmit() {
+    setShowModalSubmit(false);
+  }
+
+  return { formik, showModalSubmit, onCloseModalSubmit };
 }
