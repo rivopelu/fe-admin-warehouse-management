@@ -63,7 +63,6 @@ function InputSelect(props: IProps) {
     <div className="flex flex-col w-full relative" ref={dropdownRef}>
       {props.label && <LabelInputField required={props.required} label={props.label} />}
 
-      {/* Input Field */}
       <div className="relative">
         <input
           type="text"

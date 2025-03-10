@@ -32,6 +32,8 @@
   "warehouse_name" : "warehouse name",
   "insert_warehouse_name" : "insert warehouse name",
   "warehouse_address" : "Warehouse address",
-  "insert_warehouse_address" : "Insert warehouse address"
+  "insert_warehouse_address" : "Insert warehouse address",
+  "province" : "Province",
+  "select_province" : "Select province"
 
 }

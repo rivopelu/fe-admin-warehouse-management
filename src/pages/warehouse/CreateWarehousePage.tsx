@@ -9,6 +9,7 @@ import InputText from '../../components/atoms/InputText.tsx';
 import { FormikProvider } from 'formik';
 import useCreateWarehousePage from './useCreateWarehousePage.ts';
 import InputTextarea from '../../components/atoms/InputTextArea.tsx';
+import { InputAddressModule } from '../../components/molecules/InputAddressModule.tsx';
 
 function CreateWarehousePage() {
   const page = useCreateWarehousePage();
@@ -51,6 +52,7 @@ function CreateWarehousePage() {
                 placeholder={t('insert_warehouse_address')}
                 label={t('warehouse_address')}
               />
+              <InputAddressModule />
             </form>
           </FormikProvider>
         </CardBody>
