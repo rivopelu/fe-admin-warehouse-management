@@ -15,10 +15,12 @@ import { PRIVILEGE } from '../../enums/privilege-enum.ts';
 const AuthProvider = ({ children }: { children: ReactNode }) => {
   const rawUser = localStorage.getItem(LOCAL_STORAGE_KEY.USER);
   const getToken = localStorage.getItem(LOCAL_STORAGE_KEY.ACCESS_TOKEN);
+  const rawPrivileges = localStorage.getItem(LOCAL_STORAGE_KEY.PRIVILEGES);
+  const privilege = rawPrivileges ? JSON.parse(rawPrivileges) : [];
   const getUser = rawUser ? JSON.parse(rawUser) : undefined;
   const [token, setToken] = useState<string | undefined>(getToken || undefined);
   const [user, setUser] = useState<IResGetMe | undefined>(getUser || undefined);
-  const [privileges, setPrivileges] = useState<PRIVILEGE[]>([]);
+  const [privileges, setPrivileges] = useState<PRIVILEGE[]>(privilege);
   const navigate = useNavigate();
   const httpService = new HttpService();
   const errorService = new ErrorService();

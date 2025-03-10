@@ -27,6 +27,9 @@
   "privilege_setting" : "Privilege Setting",
   "setting" : "setting",
   "submit" : "submit",
-  "role_successfully_updated" : "Role successfully updated"
+  "role_successfully_updated" : "Role successfully updated",
+  "insert_warehouse_data" : "Insert warehouse data",
+  "warehouse_name" : "warehouse name",
+  "insert_warehouse_name" : "insert warehouse name"
 
 }
