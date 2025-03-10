@@ -44,5 +44,6 @@
   "select_district" : "Select district",
   "select_sub_district" : "Select sub district",
   "sub_district" : "Sub district",
-  "warehouse_success_created" : "warehouse success created"
+  "warehouse_success_created" : "warehouse success created",
+  "edit_warehouse" : "Edit warehouse"
 }

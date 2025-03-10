@@ -15,7 +15,7 @@ import Grid from '../../components/atoms/Grid.tsx';
 import PopupQuestion from '../../components/molecules/PopupQuestion.tsx';
 import { ASSETS } from '../../constants/assets.ts';
 
-function CreateWarehousePage() {
+function CreateEditWarehousePage() {
   const page = useCreateWarehousePage();
 
   const breadcrumbData: IBreadcrumbData[] = [
@@ -28,7 +28,7 @@ function CreateWarehousePage() {
       path: ROUTES.WAREHOUSE(),
     },
     {
-      label: t('create_warehouse'),
+      label: t(page?.id ? 'edit_warehouse' : 'create_warehouse'),
     },
   ];
 
@@ -42,7 +42,7 @@ function CreateWarehousePage() {
         title={t('confirmation.title_create_warehouse')}
         img={ASSETS.IL_CONFIRMATION_SUBMIT}
       />
-      <PageTitle title={t('create_warehouse')} breadcrumb={breadcrumbData} />
+      <PageTitle title={t(page?.id ? 'edit_warehouse' : 'create_warehouse')} breadcrumb={breadcrumbData} />
       <Card>
         <CardBody>
           <h1>{t('insert_warehouse_data')}</h1>
@@ -83,4 +83,4 @@ function CreateWarehousePage() {
   );
 }
 
-export default CreateWarehousePage;
+export default CreateEditWarehousePage;

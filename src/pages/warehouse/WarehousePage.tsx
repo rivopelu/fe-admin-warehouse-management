@@ -11,6 +11,8 @@ import { ROUTES } from '../../routes/routes.ts';
 import Button from '../../components/atoms/Button.tsx';
 import { useAuth } from '../../hooks/useAuth.ts';
 import { PRIVILEGE } from '../../enums/privilege-enum.ts';
+import IconButton from '../../components/atoms/IconButton.tsx';
+import { MdEdit } from 'react-icons/md';
 
 const WarehousePage = () => {
   const page = useWarehousePage();
@@ -23,6 +25,16 @@ const WarehousePage = () => {
     {
       headerTitle: t('address'),
       component: (e) => <div>{e.address}</div>,
+    },
+    {
+      headerTitle: '',
+      component: (e) => (
+        <Link to={ROUTES.EDIT_WAREHOUSE(e.id)}>
+          <IconButton>
+            <MdEdit />
+          </IconButton>
+        </Link>
+      ),
     },
   ];
   return (

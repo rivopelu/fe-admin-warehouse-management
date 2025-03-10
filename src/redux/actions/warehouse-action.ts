@@ -2,8 +2,9 @@ import BaseActions from '../base-actions.ts';
 import { WarehouseSlice } from '../reducers/warehouse-reducers.ts';
 import { Dispatch } from '@reduxjs/toolkit';
 import { ENDPOINT } from '../../constants/endpoint.ts';
-import { BaseResponsePaginated } from '../../types/data/IResModel.ts';
+import { BaseResponse, BaseResponsePaginated } from '../../types/data/IResModel.ts';
 import { IResListWarehouse } from '../../types/response/IResListWarehouse.ts';
+import { IResDetailWarehouse } from '../../types/response/IResDetailWarehouse.ts';
 
 export class WarehouseAction extends BaseActions {
   private action = WarehouseSlice.actions;
@@ -25,6 +26,21 @@ export class WarehouseAction extends BaseActions {
         .catch((e) => {
           dispatch(this.action.setListWarehouse({ loading: false, data: undefined, paginated_data: undefined }));
           this.errorService.fetchApiError(e);
+        });
+    };
+  }
+
+  detailWarehouse(id: string) {
+    return async (dispatch: Dispatch) => {
+      dispatch(this.action.detailWarehouse({ loading: true, data: undefined }));
+      await this.httpService
+        .GET(ENDPOINT.DETAIL_WAREHOUSE(id))
+        .then((res: BaseResponse<IResDetailWarehouse>) => {
+          dispatch(this.action.detailWarehouse({ loading: false, data: res.data.response_data }));
+        })
+        .catch((e) => {
+          this.errorService.fetchApiError(e);
+          dispatch(this.action.detailWarehouse({ loading: false, data: undefined }));
         });
     };
   }

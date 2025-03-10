@@ -5,7 +5,7 @@ import HomePage from '../pages/home/HomePage.tsx';
 import SignInPage from '../pages/auth/SignInPage.tsx';
 import TestPage from '../pages/TestPage.tsx';
 import WarehousePage from '../pages/warehouse/WarehousePage.tsx';
-import CreateWarehousePage from '../pages/warehouse/CreateWarehousePage.tsx';
+import CreateEditWarehousePage from '../pages/warehouse/CreateEditWarehousePage.tsx';
 import { PRIVILEGE } from '../enums/privilege-enum.ts';
 import SettingPagePrivilegesPage from '../pages/settings/SettingPagePrivilegesPage.tsx';
 
@@ -30,13 +30,19 @@ export const routesList: IRouteList[] = [
     privilege: PRIVILEGE.CREATE_WAREHOUSE,
     route: ROUTES.CREATE_WAREHOUSE(),
     type: PAGE_TYPE_ENUM.PRIMARY,
-    elements: CreateWarehousePage,
+    elements: CreateEditWarehousePage,
   },
   {
     privilege: PRIVILEGE.SETTING_PRIVILEGE,
     route: ROUTES.SETTING_PRIVILEGE(),
     type: PAGE_TYPE_ENUM.PRIMARY,
     elements: SettingPagePrivilegesPage,
+  },
+  {
+    privilege: PRIVILEGE.EDIT_WAREHOUSE,
+    route: ROUTES.EDIT_WAREHOUSE(':id'),
+    type: PAGE_TYPE_ENUM.PRIMARY,
+    elements: CreateEditWarehousePage,
   },
 ];
 

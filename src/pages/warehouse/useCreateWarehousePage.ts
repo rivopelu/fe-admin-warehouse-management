@@ -2,22 +2,30 @@ import { IReqCreateWarehouse } from '../../types/request/IReqCreateWarehouse.ts'
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { t } from 'i18next';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { HttpService } from '../../services/http.service.ts';
 import ErrorService from '../../services/error.service.ts';
 import { ENDPOINT } from '../../constants/endpoint.ts';
 import toast from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { ROUTES } from '../../routes/routes.ts';
+import { useAppDispatch, useAppSelector } from '../../redux/stores.ts';
+import { WarehouseAction } from '../../redux/actions/warehouse-action.ts';
 
 export default function useCreateWarehousePage() {
   const [showModalSubmit, setShowModalSubmit] = useState<boolean>(false);
   const [data, setData] = useState<IReqCreateWarehouse | undefined>();
   const [loadingSubmit, setLoadingSubmit] = useState<boolean>(false);
 
+  const Warehouse = useAppSelector((state) => state.Warehouse);
+  const detail = Warehouse?.detailWarehouse?.data;
+  const { id } = useParams();
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+
   const httpService = new HttpService();
   const errorService = new ErrorService();
+  const warehouseAction = new WarehouseAction();
 
   const initState: IReqCreateWarehouse = {
     name: '',
@@ -42,6 +50,24 @@ export default function useCreateWarehousePage() {
     },
   });
 
+  useEffect(() => {
+    if (!detail) return;
+    const data: IReqCreateWarehouse = {
+      name: detail?.name,
+      address: detail?.address,
+      province_id: detail?.province_id,
+      city_id: detail?.city_id,
+      district_id: detail?.district_id,
+      sub_district_id: detail?.sub_district_id,
+    };
+    formik.setValues(data);
+  }, [detail]);
+
+  useEffect(() => {
+    if (!id) return;
+    dispatch(warehouseAction.detailWarehouse(id)).then();
+  }, [id]);
+
   function onCloseModalSubmit() {
     setShowModalSubmit(false);
   }
@@ -62,5 +88,6 @@ export default function useCreateWarehousePage() {
         });
     }
   }
-  return { formik, showModalSubmit, onCloseModalSubmit, onSubmit, loadingSubmit };
+
+  return { formik, showModalSubmit, onCloseModalSubmit, onSubmit, loadingSubmit, id };
 }
