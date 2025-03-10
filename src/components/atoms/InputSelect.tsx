@@ -68,7 +68,7 @@ function InputSelect(props: IProps) {
         <input
           type="text"
           className={twMerge(
-            'h-[40px] px-3 w-full duration-300 bg-white outline-2 outline-slate-300 rounded-md',
+            'h-[40px] px-3 w-full duration-300 bg-white outline-2 outline-gray-300 rounded-md',
             'focus:outline-black/50 focus:bg-primary-main/5',
             props?.errorMessage ? ' outline-red-500 bg-red-100' : '',
             props?.className,
