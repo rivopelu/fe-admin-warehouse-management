@@ -16,7 +16,7 @@ function Table(props: IProps) {
       <thead className={'border-b'}>
         <tr>
           {props.column.map((header, i) => (
-            <th className={twMerge('text-start py-3  ', i === 0 && 'pl-4')} key={i}>
+            <th className={twMerge('text-start py-3 font-semibold   ', i === 0 && 'pl-4')} key={i}>
               {header.headerTitle}
             </th>
           ))}
@@ -28,10 +28,7 @@ function Table(props: IProps) {
           ? Array.from({ length: 10 }).map((_, i) => (
               <tr key={i}>
                 {props.column.map((_, idx) => (
-                  <td
-                    key={idx + 1}
-                    className={twMerge('py-3', idx === 0 && 'pl-4', i % 2 === 0 && 'bg-primary-main/5', 'border-b')}
-                  >
+                  <td key={idx + 1} className={twMerge('py-3', idx === 0 && 'pl-4', 'border-b')}>
                     {loadingRow()}
                   </td>
                 ))}
@@ -41,10 +38,7 @@ function Table(props: IProps) {
               return (
                 <tr key={i}>
                   {props.column.map((column, idx) => (
-                    <td
-                      key={idx}
-                      className={twMerge('py-3', idx === 0 && 'pl-4', i % 2 === 0 && 'bg-primary-main/5', 'border-b')}
-                    >
+                    <td key={idx} className={twMerge('py-3', idx === 0 && 'pl-4', 'border-b')}>
                       {column.component && column.component(row)}
                     </td>
                   ))}
