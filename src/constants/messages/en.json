@@ -11,7 +11,9 @@
     "CREATE_WAREHOUSE" :  "Create Warehouse",
     "SETTING_PRIVILEGE" : "Setting privilege"
   },
-
+  "confirmation" : {
+    "title_create_warehouse" : "Are you sure create a new warehosue?"
+  },
   "email" : "email",
   "insert_email" : "insert email",
   "password" : "password",
@@ -41,5 +43,6 @@
   "district" : "District",
   "select_district" : "Select district",
   "select_sub_district" : "Select sub district",
-  "sub_district" : "Sub district"
+  "sub_district" : "Sub district",
+  "warehouse_success_created" : "warehouse success created"
 }

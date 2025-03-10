@@ -11,4 +11,5 @@ export const ENDPOINT = {
   LIST_PRIVILEGES: () => `/v1/list-privileges`,
   ROLE_PRIVILEGES: () => `/v1/role-privilege`,
   SETTING_PRIVILEGE: () => `/setting/privilege`,
+  CREATE_WAREHOUSE: () => `/warehouse/v1/create`,
 };

@@ -3,9 +3,21 @@ import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { t } from 'i18next';
 import { useState } from 'react';
+import { HttpService } from '../../services/http.service.ts';
+import ErrorService from '../../services/error.service.ts';
+import { ENDPOINT } from '../../constants/endpoint.ts';
+import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
+import { ROUTES } from '../../routes/routes.ts';
 
 export default function useCreateWarehousePage() {
-  const [showModalSubmit, setShowModalSubmit] = useState<boolean>(true);
+  const [showModalSubmit, setShowModalSubmit] = useState<boolean>(false);
+  const [data, setData] = useState<IReqCreateWarehouse | undefined>();
+  const [loadingSubmit, setLoadingSubmit] = useState<boolean>(false);
+
+  const navigate = useNavigate();
+  const httpService = new HttpService();
+  const errorService = new ErrorService();
 
   const initState: IReqCreateWarehouse = {
     name: '',
@@ -25,7 +37,8 @@ export default function useCreateWarehousePage() {
     initialValues: initState,
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      alert(JSON.stringify(values));
+      setShowModalSubmit(true);
+      setData(values);
     },
   });
 
@@ -33,5 +46,21 @@ export default function useCreateWarehousePage() {
     setShowModalSubmit(false);
   }
 
-  return { formik, showModalSubmit, onCloseModalSubmit };
+  function onSubmit() {
+    if (data) {
+      setLoadingSubmit(true);
+      httpService
+        .POST(ENDPOINT.CREATE_WAREHOUSE(), data)
+        .then(() => {
+          setLoadingSubmit(false);
+          toast.success(t('warehouse_success_created'));
+          navigate(ROUTES.WAREHOUSE());
+        })
+        .catch((e) => {
+          setLoadingSubmit(false);
+          errorService.fetchApiError(e);
+        });
+    }
+  }
+  return { formik, showModalSubmit, onCloseModalSubmit, onSubmit, loadingSubmit };
 }

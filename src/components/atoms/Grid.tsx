@@ -1,4 +1,4 @@
-import { JSX } from 'react';
+import { ReactNode } from 'react';
 import { twMerge } from 'tailwind-merge';
 
 export default function Grid({ grid = 1, gap = 'sm', className, children }: IProps) {
@@ -24,5 +24,5 @@ interface IProps {
   grid?: 1 | 2 | 3 | 4 | 5;
   gap?: 'xl' | 'md' | 'lg' | 'sm';
   className?: string;
-  children: JSX.Element;
+  children: ReactNode;
 }

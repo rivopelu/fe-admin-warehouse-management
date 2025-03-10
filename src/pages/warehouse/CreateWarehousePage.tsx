@@ -12,7 +12,8 @@ import InputTextarea from '../../components/atoms/InputTextArea.tsx';
 import { InputAddressModule } from '../../components/molecules/InputAddressModule.tsx';
 import Button from '../../components/atoms/Button.tsx';
 import Grid from '../../components/atoms/Grid.tsx';
-import PopupModal from '../../components/molecules/PopupModal.tsx';
+import PopupQuestion from '../../components/molecules/PopupQuestion.tsx';
+import { ASSETS } from '../../constants/assets.ts';
 
 function CreateWarehousePage() {
   const page = useCreateWarehousePage();
@@ -31,19 +32,16 @@ function CreateWarehousePage() {
     },
   ];
 
-  function bodyModalSubmit() {
-    return (
-      <Card>
-        <CardBody>
-          <h1>MODAL</h1>
-        </CardBody>
-      </Card>
-    );
-  }
-
   return (
     <PageContainer>
-      <PopupModal onClose={page.onCloseModalSubmit} component={bodyModalSubmit()} open={page.showModalSubmit} />
+      <PopupQuestion
+        onSubmit={page.onSubmit}
+        loading={page.loadingSubmit}
+        onClose={page.onCloseModalSubmit}
+        open={page.showModalSubmit}
+        title={t('confirmation.title_create_warehouse')}
+        img={ASSETS.IL_CONFIRMATION_SUBMIT}
+      />
       <PageTitle title={t('create_warehouse')} breadcrumb={breadcrumbData} />
       <Card>
         <CardBody>
@@ -63,6 +61,7 @@ function CreateWarehousePage() {
                   required={true}
                   id={'name'}
                   name={'name'}
+                  type={'text'}
                   placeholder={t('insert_warehouse_name')}
                   label={t('warehouse_name')}
                 />

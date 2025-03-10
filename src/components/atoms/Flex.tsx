@@ -1,4 +1,4 @@
-import { JSX } from 'react';
+import { JSX, ReactNode } from 'react';
 import { twMerge } from 'tailwind-merge';
 
 export default function Flex({
@@ -60,5 +60,5 @@ interface IProps {
   justify?: 'start' | 'center' | 'end' | 'between' | 'around' | 'evenly';
   align?: 'start' | 'center' | 'end' | 'stretch' | 'baseline';
   className?: string;
-  children: JSX.Element | JSX.Element[];
+  children: ReactNode;
 }
