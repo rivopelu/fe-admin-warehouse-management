@@ -25,6 +25,8 @@ export default function InputText(props: IProps) {
           onKeyDown={(e) => {
             if (e.key === 'Enter' && props.onEnter) {
               props.onEnter();
+            } else {
+              e.preventDefault();
             }
           }}
           type={props.type || 'text'}

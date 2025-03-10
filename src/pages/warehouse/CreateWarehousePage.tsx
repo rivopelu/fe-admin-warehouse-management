@@ -10,6 +10,8 @@ import { FormikProvider } from 'formik';
 import useCreateWarehousePage from './useCreateWarehousePage.ts';
 import InputTextarea from '../../components/atoms/InputTextArea.tsx';
 import { InputAddressModule } from '../../components/molecules/InputAddressModule.tsx';
+import Button from '../../components/atoms/Button.tsx';
+import Grid from '../../components/atoms/Grid.tsx';
 
 function CreateWarehousePage() {
   const page = useCreateWarehousePage();
@@ -37,22 +39,30 @@ function CreateWarehousePage() {
         <Divider />
         <CardBody>
           <FormikProvider value={page.formik}>
-            <form className={'grid gap-5'}>
-              <InputText
-                required={true}
-                id={'name'}
-                name={'name'}
-                placeholder={t('insert_warehouse_name')}
-                label={t('warehouse_name')}
-              />
-              <InputTextarea
-                required={true}
-                id={'address'}
-                name={'address'}
-                placeholder={t('insert_warehouse_address')}
-                label={t('warehouse_address')}
-              />
-              <InputAddressModule />
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                page.formik.handleSubmit();
+              }}
+            >
+              <Grid gap={'md'}>
+                <InputText
+                  required={true}
+                  id={'name'}
+                  name={'name'}
+                  placeholder={t('insert_warehouse_name')}
+                  label={t('warehouse_name')}
+                />
+                <InputTextarea
+                  required={true}
+                  id={'address'}
+                  name={'address'}
+                  placeholder={t('insert_warehouse_address')}
+                  label={t('warehouse_address')}
+                />
+                <InputAddressModule />
+                <Button className={'mt-6'}>{t('submit')}</Button>
+              </Grid>
             </form>
           </FormikProvider>
         </CardBody>

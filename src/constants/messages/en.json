@@ -11,6 +11,7 @@
     "CREATE_WAREHOUSE" :  "Create Warehouse",
     "SETTING_PRIVILEGE" : "Setting privilege"
   },
+
   "email" : "email",
   "insert_email" : "insert email",
   "password" : "password",
