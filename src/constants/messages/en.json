@@ -9,7 +9,8 @@
     "DETAIL_WAREHOUSE" : "Detail Warehouse",
     "EDIT_WAREHOUSE" : "Edit Warehouse",
     "CREATE_WAREHOUSE" :  "Create Warehouse",
-    "SETTING_PRIVILEGE" : "Setting privilege"
+    "SETTING_PRIVILEGE" : "Setting privilege",
+    "CREATE_CATEGORY" : "Create category"
   },
   "confirmation" : {
     "title_create_warehouse" : "Are you sure create a new warehouse?",

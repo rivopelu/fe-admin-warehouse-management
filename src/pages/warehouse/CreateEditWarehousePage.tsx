@@ -33,7 +33,7 @@ function CreateEditWarehousePage() {
   ];
 
   return (
-    <PageContainer>
+    <PageContainer> 
       <PopupQuestion
         onSubmit={page.onSubmit}
         loading={page.loadingSubmit}
