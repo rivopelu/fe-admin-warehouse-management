@@ -50,5 +50,6 @@
   "edit_warehouse" : "Edit warehouse",
   "warehouse_success_updated" : "warehouse success updated",
   "master_data" : "Master data",
-  "category" : "category"
+  "category" : "category",
+  "product" : "product"
 }

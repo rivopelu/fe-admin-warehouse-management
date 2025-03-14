@@ -23,14 +23,18 @@ export const sidebarMenuList: ISideBarMenuList[] = [
     icon: MdSettings,
   },
   {
-    path : ROUTES.MASTER_DATA.CATEGORY(),
-    label  : t("master_data"),
-    icon : MdInventory,
-    children : [
+    path: ROUTES.MASTER_DATA.CATEGORY(),
+    label: t('master_data'),
+    icon: MdInventory,
+    children: [
       {
-        path : ROUTES.MASTER_DATA.CATEGORY(),
-        label : t("category"),
-      }
-    ]
-  }
+        path: ROUTES.MASTER_DATA.CATEGORY(),
+        label: t('category'),
+      },
+      {
+        path: ROUTES.MASTER_DATA.PRODUCT(),
+        label: t('product'),
+      },
+    ],
+  },
 ];

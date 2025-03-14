@@ -17,7 +17,7 @@ export default function MultipleSidebarMenuList({ label, icon: Icon, active, chi
   const location = useLocation();
   const currentPath = location.pathname.split('/');
   const isActive = path && (currentPath[1] === path.split('/')[1] || currentPath[2] === path.split('/')[2]);
-  const firstPath = location.pathname.split('/')[1];
+  const firstPath = location.pathname.split('/')[2];
 
   const [isOpen, setIsOpen] = useState(isActive);
 
@@ -41,7 +41,7 @@ export default function MultipleSidebarMenuList({ label, icon: Icon, active, chi
       {isOpen && children && (
         <div className="pl-6 mt-2 space-y-2 duration-200">
           {children.map((item, index) => {
-            const itemFirstPath = item.path && item?.path.split('/')[1];
+            const itemFirstPath = item.path && item?.path.split('/')[2];
 
             return (
               <Link
