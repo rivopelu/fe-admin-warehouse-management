@@ -1,7 +1,7 @@
 import { ISideBarMenuList } from '../types/data/ISideBarMenuList.ts';
 import { ROUTES } from '../routes/routes.ts';
 import { t } from 'i18next';
-import { MdHome, MdSettings, MdWarehouse } from 'react-icons/md';
+import { MdHome, MdInventory, MdSettings, MdWarehouse } from 'react-icons/md';
 import { PRIVILEGE } from '../enums/privilege-enum.ts';
 
 export const sidebarMenuList: ISideBarMenuList[] = [
@@ -22,4 +22,15 @@ export const sidebarMenuList: ISideBarMenuList[] = [
     label: t('setting'),
     icon: MdSettings,
   },
+  {
+    path : ROUTES.MASTER_DATA.CATEGORY(),
+    label  : t("master_data"),
+    icon : MdInventory,
+    children : [
+      {
+        path : ROUTES.MASTER_DATA.CATEGORY(),
+        label : t("category"),
+      }
+    ]
+  }
 ];

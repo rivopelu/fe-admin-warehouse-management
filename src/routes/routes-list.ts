@@ -8,6 +8,7 @@ import WarehousePage from '../pages/warehouse/WarehousePage.tsx';
 import CreateEditWarehousePage from '../pages/warehouse/CreateEditWarehousePage.tsx';
 import { PRIVILEGE } from '../enums/privilege-enum.ts';
 import SettingPagePrivilegesPage from '../pages/settings/SettingPagePrivilegesPage.tsx';
+import CategoryPage from '../pages/master-data/category/CategoryPage.tsx';
 
 export const routesList: IRouteList[] = [
   {
@@ -43,6 +44,12 @@ export const routesList: IRouteList[] = [
     route: ROUTES.EDIT_WAREHOUSE(':id'),
     type: PAGE_TYPE_ENUM.PRIMARY,
     elements: CreateEditWarehousePage,
+  },
+  {
+    privilege: PRIVILEGE.EDIT_WAREHOUSE,
+    route: ROUTES.MASTER_DATA.CATEGORY(),
+    type: PAGE_TYPE_ENUM.PRIMARY,
+    elements: CategoryPage,
   },
 ];
 

@@ -4,6 +4,7 @@ import { sidebarMenuList } from '../../constants/sidebar-menu-list.ts';
 import { useLocation } from 'react-router-dom';
 import { ISideBarMenuList } from '../../types/data/ISideBarMenuList.ts';
 import { useAuth } from '../../hooks/useAuth.ts';
+import MultipleSidebarMenuList from '../atoms/MultipleSidebarMenuList.tsx';
 
 export default function Sidebar() {
   const location = useLocation();
@@ -11,8 +12,19 @@ export default function Sidebar() {
   const auth = useAuth();
 
   function menuList(item: ISideBarMenuList) {
-    const itemFirstPath = item.path.split('/')[1];
-
+    const itemFirstPath = item.path && item?.path.split('/')[1];
+    if (item.children) {
+      return (
+        <MultipleSidebarMenuList
+          key={item.path}
+          path={item.path}
+          active={firstPath === itemFirstPath}
+          children={item.children}
+          icon={item.icon}
+          label={item.label}
+        />
+      );
+    }
     return (
       <SidebarMenuList
         key={item.path}

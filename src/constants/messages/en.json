@@ -48,5 +48,7 @@
   "sub_district" : "Sub district",
   "warehouse_success_created" : "warehouse success created",
   "edit_warehouse" : "Edit warehouse",
-  "warehouse_success_updated" : "warehouse success updated"
+  "warehouse_success_updated" : "warehouse success updated",
+  "master_data" : "Master data",
+  "category" : "category"
 }

@@ -5,9 +5,25 @@ import { ENDPOINT } from '../../constants/endpoint.ts';
 import { BaseResponse } from '../../types/data/IResModel.ts';
 import { PRIVILEGE } from '../../enums/privilege-enum.ts';
 import { IResRolePrivileges } from '../../types/response/IResRolePrivileges.ts';
+import { IResListCategory } from '../../types/response/IResListCategory.ts';
 
 export class MasterDataActions extends BaseActions {
   private action = MasterDataSlice.actions;
+
+  getListAllCategory() {
+    return async (dispatch: Dispatch) => {
+      dispatch(this.action.listCategory({ loading: true, data: undefined }));
+      await this.httpService
+        .GET(ENDPOINT.LIST_ALL_CATEGORY())
+        .then((res: BaseResponse<IResListCategory[]>) => {
+          dispatch(this.action.listCategory({ loading: false, data: res.data.response_data }));
+        })
+        .catch((e) => {
+          this.errorService.fetchApiError(e);
+          dispatch(this.action.listCategory({ loading: false, data: undefined }));
+        });
+    };
+  }
 
   getListPrivileges() {
     return async (dispatch: Dispatch) => {

@@ -2,10 +2,12 @@ import { BasePayload, IPayloadData } from '../../types/data/IResModel.ts';
 import { PRIVILEGE } from '../../enums/privilege-enum.ts';
 import { createSlice } from '@reduxjs/toolkit';
 import { IResRolePrivileges } from '../../types/response/IResRolePrivileges.ts';
+import { IResListCategory } from '../../types/response/IResListCategory.ts';
 
 export interface IMasterDataReducer {
   listPrivileges?: IPayloadData<PRIVILEGE[]>;
   rolePrivileges?: IPayloadData<IResRolePrivileges[]>;
+  listAllCategory?: IPayloadData<IResListCategory[]>;
 }
 
 const initState: IMasterDataReducer = {};
@@ -19,6 +21,9 @@ export const MasterDataSlice = createSlice({
     },
     listRolePrivileges: (state: IMasterDataReducer, action: BasePayload<IResRolePrivileges[]>) => {
       state.rolePrivileges = action.payload;
+    },
+    listCategory: (state: IMasterDataReducer, action: BasePayload<IResListCategory[]>) => {
+      state.listAllCategory = action.payload;
     },
   },
 });
