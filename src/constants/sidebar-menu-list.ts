@@ -16,12 +16,7 @@ export const sidebarMenuList: ISideBarMenuList[] = [
     label: t('warehouse'),
     icon: MdWarehouse,
   },
-  {
-    privilege: PRIVILEGE.SETTING_PRIVILEGE,
-    path: ROUTES.SETTING_PRIVILEGE(),
-    label: t('setting'),
-    icon: MdSettings,
-  },
+
   {
     path: ROUTES.MASTER_DATA.CATEGORY(),
     label: t('master_data'),
@@ -36,5 +31,11 @@ export const sidebarMenuList: ISideBarMenuList[] = [
         label: t('product'),
       },
     ],
+  },
+  {
+    privilege: PRIVILEGE.SETTING_PRIVILEGE,
+    path: ROUTES.SETTING_PRIVILEGE(),
+    label: t('setting'),
+    icon: MdSettings,
   },
 ];

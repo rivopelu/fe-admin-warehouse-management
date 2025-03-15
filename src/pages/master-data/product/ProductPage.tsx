@@ -55,7 +55,7 @@ export default function ProductPage() {
 
   return (
     <PageContainer>
-      <PageTitle title={t('product')} breadcrumb={breadcrumbData} />
+      <PageTitle title={t('product_management')} breadcrumb={breadcrumbData} />
       <Table data={page.dataList} loading={page.loadingPage} column={tableColumn} />
     </PageContainer>
   );
