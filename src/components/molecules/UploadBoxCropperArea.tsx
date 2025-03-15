@@ -1,12 +1,13 @@
 import { useCallback, useRef, useState } from 'react';
 import Cropper, { Area, Point } from 'react-easy-crop';
 import LabelInputField from '../atoms/LabelInputField.tsx';
-import { MdOutlineUploadFile, MdUploadFile } from 'react-icons/md';
+import { MdOutlineUploadFile } from 'react-icons/md';
 import PopupModal from './PopupModal.tsx';
 import Button from '../atoms/Button.tsx';
 import getCroppedImg from '../../utils/cropper-utils.ts';
 import toast from 'react-hot-toast';
 import { t } from 'i18next';
+import Slider from '../atoms/Slider.tsx';
 
 export default function UploadBoxCropperArea(props: IProps) {
   const [aspectSet] = useState<number>(props.ratio || 1);
@@ -50,18 +51,16 @@ export default function UploadBoxCropperArea(props: IProps) {
           className="w-full px-8 flex justify-center items-center lg:w-[400px] flex-col gap-5"
           style={{ zIndex: 999 }}
         >
-          {/*<Slider*/}
-          {/*  defaultValue={zoom}*/}
-          {/*  aria-label="Default"*/}
-          {/*  valueLabelDisplay="auto"*/}
-          {/*  min={1}*/}
-          {/*  max={3}*/}
-          {/*  step={0.1}*/}
-          {/*  value={zoom}*/}
-          {/*  onChange={(e: any) => {*/}
-          {/*    setZoom(e.target.value);*/}
-          {/*  }}*/}
-          {/*/>*/}
+          <Slider
+            aria-label="Default"
+            min={1}
+            max={3}
+            step={0.1}
+            value={zoom}
+            onChange={(e: number) => {
+              setZoom(e);
+            }}
+          />
           <div className="lg:flex grid grid-cols-2 gap-3    w-full">
             <Button color={'error'} onClick={() => setFileCrop(null)}>
               Cancel
