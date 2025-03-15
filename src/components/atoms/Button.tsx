@@ -18,10 +18,24 @@ export default function Button(props: IProps) {
   }
 
   function checkVariant() {
+    const colorClasses = {
+      primary: 'border-primary-main text-primary-main bg-transparent hover:bg-primary-main/5 active:bg-primary-main/10',
+      info: 'border-blue-500 text-blue-500 bg-transparent hover:bg-blue-500/5 active:bg-blue-500/10',
+      error: 'border-red-500 text-red-500 bg-transparent hover:bg-red-500/5 active:bg-red-500/10',
+      gray: 'border-gray-500 text-gray-500 bg-transparent hover:bg-gray-500/5 active:bg-gray-500/10',
+    };
+
+    const solidClasses = {
+      primary: 'bg-primary-main text-white border-primary-main hover:bg-primary-dark active:bg-primary-light',
+      info: 'bg-blue-500 text-white border-blue-500 hover:bg-blue-600 active:bg-blue-400',
+      error: 'bg-red-500 text-white border-red-500 hover:bg-red-600 active:bg-red-400',
+      gray: 'bg-gray-500 text-white border-gray-500 hover:bg-gray-600 active:bg-gray-400',
+    };
+
     if (props.variant === 'outlined') {
-      return 'border-primary-main text-primary-main bg-transparent hover:bg-primary-main/5 active:bg-primary-main/10 active:translate-y-[-2px]';
+      return colorClasses[props.color || 'primary'];
     }
-    return 'bg-primary-main text-white border-primary-main hover:bg-primary-dark active:bg-primary-light active:translate-y-[-2px]';
+    return solidClasses[props.color || 'primary'];
   }
 
   function checkSize() {
@@ -43,7 +57,7 @@ export default function Button(props: IProps) {
         checkVariant(),
         checkRounded(),
         checkSize(),
-        props.disable ? 'opacity-10 cursor-not-allowed' : '',
+        props.disable ? 'opacity-50 cursor-not-allowed' : '',
         props.className,
       )}
     >
@@ -62,4 +76,5 @@ interface IProps {
   variant?: 'outlined' | 'solid';
   size?: 'sm' | 'default';
   disable?: boolean;
+  color?: 'primary' | 'info' | 'error' | 'gray';
 }

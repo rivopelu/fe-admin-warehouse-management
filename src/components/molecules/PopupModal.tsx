@@ -37,7 +37,7 @@ export default function PopupModal(props: IProps) {
       className="h-screen w-screen fixed top-0 left-0 flex items-center justify-center bg-black/20 backdrop-blur-[4px] z-[999]"
       onClick={handleBackdropClick}
     >
-      <div className="absolute top-4 right-4">
+      <div className="absolute top-4 right-4" style={{ zIndex: 999 }}>
         <IconButton onClick={props.onClose}>
           <MdClose />
         </IconButton>

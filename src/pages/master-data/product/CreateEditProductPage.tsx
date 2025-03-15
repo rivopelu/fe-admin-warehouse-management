@@ -8,6 +8,8 @@ import Divider from '../../../components/atoms/Divider.tsx';
 import { FormikProvider } from 'formik';
 import InputText from '../../../components/atoms/InputText.tsx';
 import { useCreateEditProductPage } from './useCreateEditProductPage.ts';
+import UploadBoxCropperArea from '../../../components/molecules/UploadBoxCropperArea.tsx';
+import Grid from '../../../components/atoms/Grid.tsx';
 
 export default function CreateEditProductPage() {
   const page = useCreateEditProductPage();
@@ -39,13 +41,16 @@ export default function CreateEditProductPage() {
         <CardBody>
           <FormikProvider value={page.formik}>
             <form>
-              <InputText
-                id={'name'}
-                name={'name'}
-                label={t('product_name')}
-                placeholder={t('insert_product_name')}
-                required
-              />
+              <Grid>
+                <UploadBoxCropperArea label={'image'} required />
+                <InputText
+                  id={'name'}
+                  name={'name'}
+                  label={t('product_name')}
+                  placeholder={t('insert_product_name')}
+                  required
+                />
+              </Grid>
             </form>
           </FormikProvider>
         </CardBody>
