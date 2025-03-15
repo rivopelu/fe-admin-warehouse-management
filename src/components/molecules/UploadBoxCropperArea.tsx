@@ -114,7 +114,12 @@ export default function UploadBoxCropperArea(props: IProps) {
   return (
     <div>
       {props.label && <LabelInputField label={props.label} required={props.required} />}
-      <div className={'bg-gray-50 border border-dashed  border-slate-300 rounded-md   h-48'}>
+      <div
+        className={twMerge(
+          'bg-gray-50 border border-dashed  rounded-md   h-48',
+          props.errorMessage ? 'border-red-700' : 'border-slate-300',
+        )}
+      >
         <div
           className={twMerge(
             ' h-full w-full flex items-center  justify-center duration-300 ',
@@ -155,12 +160,19 @@ export default function UploadBoxCropperArea(props: IProps) {
               });
             }
           }}
+          onBlur={props.onBlur}
+          name={props.name}
           hidden
           accept="image/*"
           type={'file'}
           ref={inputRef}
         />
       </div>
+      {props.errorMessage && (
+        <p className={twMerge('text-xs mt-1', props.errorMessage ? 'text-red-500' : 'text-gray-500')}>
+          {props.errorMessage}
+        </p>
+      )}
       <PopupModal onClose={() => setFileCrop(undefined)} open={!!fileCrop} component={componentModalCropper()} />
     </div>
   );
@@ -169,7 +181,10 @@ export default function UploadBoxCropperArea(props: IProps) {
 interface IProps {
   ratio?: number;
   label?: string;
+  onBlur?: any;
   required?: boolean;
   onChange?: (e?: string) => void;
   value?: string;
+  name?: string;
+  errorMessage?: any;
 }

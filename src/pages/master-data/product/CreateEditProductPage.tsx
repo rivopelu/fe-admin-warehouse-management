@@ -49,6 +49,9 @@ export default function CreateEditProductPage() {
                   value={page.formik.values.image_url}
                   label={'image'}
                   required
+                  name={'image_url'}
+                  onBlur={page.formik.handleBlur}
+                  errorMessage={page?.formik?.touched?.image_url && page?.formik?.errors?.image_url}
                 />
                 <InputText
                   id={'name'}
@@ -65,7 +68,7 @@ export default function CreateEditProductPage() {
                   name={'category_id'}
                 />
                 <div className={'h-4'}></div>
-                <Button>{t('submit')}</Button>
+                <Button onClick={() => page.formik.handleSubmit()}>{t('submit')}</Button>
               </Grid>
             </form>
           </FormikProvider>

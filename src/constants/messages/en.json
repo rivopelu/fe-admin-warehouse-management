@@ -52,6 +52,7 @@
   "master_data" : "Master data",
   "category" : "category",
   "product" : "product",
+  "image" : "image",
   "product_management" : "Product management",
   "create_new_product" : "Create new product",
   "create_product" : "Create product",

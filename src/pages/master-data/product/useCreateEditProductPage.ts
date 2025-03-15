@@ -4,6 +4,8 @@ import { useAppDispatch, useAppSelector } from '../../../redux/stores.ts';
 import { MasterDataActions } from '../../../redux/actions/master-data-actions.ts';
 import { useEffect, useState } from 'react';
 import { ILabelValue } from '../../../types/data/ILabelValue.ts';
+import * as yup from 'yup';
+import { t } from 'i18next';
 
 export function useCreateEditProductPage() {
   const dispatch = useAppDispatch();
@@ -11,6 +13,12 @@ export function useCreateEditProductPage() {
   const MasterData = useAppSelector((state) => state.MasterData);
 
   const [listCategories, setListCategories] = useState<ILabelValue<string>[]>([]);
+
+  const validationSchema = yup.object().shape({
+    name: yup.string().required(t('validation.required', { name: t('product_name') })),
+    category_id: yup.string().required(t('validation.required', { name: t('category') })),
+    image_url: yup.string().required(t('validation.required', { name: t('image') })),
+  });
 
   const initValue: IReqCreateEditProduct = {
     category_id: '',
@@ -35,6 +43,7 @@ export function useCreateEditProductPage() {
 
   const formik = useFormik({
     initialValues: initValue,
+    validationSchema: validationSchema,
     onSubmit: (e) => {
       alert(JSON.stringify(e));
     },
