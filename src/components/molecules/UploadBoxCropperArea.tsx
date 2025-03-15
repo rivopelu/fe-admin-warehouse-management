@@ -1,18 +1,20 @@
 import { useCallback, useRef, useState } from 'react';
 import Cropper, { Area, Point } from 'react-easy-crop';
 import LabelInputField from '../atoms/LabelInputField.tsx';
-import { MdOutlineUploadFile } from 'react-icons/md';
+import { MdClose, MdOutlineUploadFile } from 'react-icons/md';
 import PopupModal from './PopupModal.tsx';
 import Button from '../atoms/Button.tsx';
 import getCroppedImg from '../../utils/cropper-utils.ts';
 import toast from 'react-hot-toast';
 import { t } from 'i18next';
 import Slider from '../atoms/Slider.tsx';
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import { ENV } from '../../constants/env.ts';
+import ErrorService from '../../services/error.service.ts';
+import { twMerge } from 'tailwind-merge';
+import IconButton from '../atoms/IconButton.tsx';
 
 export default function UploadBoxCropperArea(props: IProps) {
-  const URL_UPLOAD = ENV.URL_UPLOAD;
   const [aspectSet] = useState<number>(props.ratio || 1);
   const [zoom, setZoom] = useState<number>(1);
   const [crop, setCrop] = useState<Point>({ x: 0, y: 0 });
@@ -20,28 +22,20 @@ export default function UploadBoxCropperArea(props: IProps) {
   const [cropper, setCropper] = useState<Area | null>(null);
   const [loadingUpload, setLoadingUpload] = useState<boolean>(false);
   const inputRef: any = useRef(null);
+  const errorService = new ErrorService();
 
-  const uploadProcess = async (files: Blob, type: 'WATERMARK' | 'ORIGINAL') => {
+  const uploadProcess = async (files: Blob) => {
     setLoadingUpload(true);
     try {
       if (files) {
         const formData: FormData = new FormData();
-        const fileToUpload = files;
-
-        formData.append('file', fileToUpload);
+        formData.append('file', files);
         await axios
-          .post(
-            ENV.ENDPOINT + (type === 'WATERMARK' ? ENDPOINT.UPLOAD.WITH_WATERMARK : ENDPOINT.UPLOAD.ORIGINAL),
-            formData,
-          )
+          .post(ENV.URL_UPLOAD, formData)
           .then((res: AxiosResponse) => {
             setLoadingUpload(false);
             if (props.onChange) {
-              if (type === 'WATERMARK') {
-                props.onChange(res?.data?.response_data?.url);
-              } else {
-                props.onChaneOriginal && props.onChaneOriginal(res?.data?.response_data?.url);
-              }
+              props.onChange(res?.data?.response_data?.url);
             }
           })
           .catch((e) => {
@@ -61,7 +55,7 @@ export default function UploadBoxCropperArea(props: IProps) {
     try {
       const resultCropper: any = await getCroppedImg(fileCrop, cropper, 0);
       const file: File = resultCropper.file;
-      // uploadProcess(file).then();
+      uploadProcess(file).then();
       console.log(file);
       setFileCrop(null);
     } catch (e) {
@@ -73,6 +67,12 @@ export default function UploadBoxCropperArea(props: IProps) {
   const onCropComplete = useCallback((_: Area, croppedAreaPixels: Area) => {
     setCropper(croppedAreaPixels);
   }, []);
+
+  function onClearImage() {
+    if (props.onChange) {
+      props.onChange(undefined);
+    }
+  }
 
   function componentModalCropper() {
     return (
@@ -116,13 +116,32 @@ export default function UploadBoxCropperArea(props: IProps) {
       {props.label && <LabelInputField label={props.label} required={props.required} />}
       <div className={'bg-gray-50 border border-dashed  border-slate-300 rounded-md   h-48'}>
         <div
-          className={
-            'active:bg-gray-200 h-full w-full flex items-center cursor-pointer justify-center duration-300 hover:bg-gray-100 '
-          }
-          onClick={() => inputRef.current?.click()}
+          className={twMerge(
+            ' h-full w-full flex items-center  justify-center duration-300 ',
+            props.value ? '' : 'hover:bg-gray-100 active:bg-gray-200 cursor-pointer',
+          )}
+          onClick={() => !props.value && inputRef.current?.click()}
         >
-          <div>
-            <MdOutlineUploadFile className={'text-gray-400 text-5xl'} />
+          <div className={'h-full w-full flex items-center justify-center p-3'}>
+            {props.value ? (
+              <div
+                className={
+                  'h-full w-fit relative  p-2 bg-white rounded-md border-slate-300 flex items-center justify-center'
+                }
+              >
+                <div className={'absolute top-0 right-0'}>
+                  <IconButton
+                    onClick={onClearImage}
+                    className={'bg-red-500 text-white hover:bg-red-700 active:bg-red-300'}
+                  >
+                    <MdClose />
+                  </IconButton>
+                </div>
+                <img className={'h-full rounded-md'} src={props.value} alt="uploaded" />
+              </div>
+            ) : (
+              <>{loadingUpload ? <div>Loading</div> : <MdOutlineUploadFile className={'text-gray-400 text-5xl'} />}</>
+            )}
           </div>
         </div>
 
@@ -151,4 +170,6 @@ interface IProps {
   ratio?: number;
   label?: string;
   required?: boolean;
+  onChange?: (e?: string) => void;
+  value?: string;
 }

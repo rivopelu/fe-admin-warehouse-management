@@ -40,9 +40,14 @@ export default function CreateEditProductPage() {
         <Divider />
         <CardBody>
           <FormikProvider value={page.formik}>
-            <form>
+            <form onSubmit={(e) => e.preventDefault()}>
               <Grid>
-                <UploadBoxCropperArea label={'image'} required />
+                <UploadBoxCropperArea
+                  onChange={(e) => page.formik.setFieldValue('image_url', e)}
+                  value={page.formik.values.image_url}
+                  label={'image'}
+                  required
+                />
                 <InputText
                   id={'name'}
                   name={'name'}
