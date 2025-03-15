@@ -52,5 +52,10 @@
   "master_data" : "Master data",
   "category" : "category",
   "product" : "product",
-  "product_management" : "Product management"
+  "product_management" : "Product management",
+  "create_new_product" : "Create new product",
+  "create_product" : "Create product",
+  "insert_product_data" : "insert product data",
+  "product_name" : "product name",
+  "insert_product_name" : "insert product name"
 }

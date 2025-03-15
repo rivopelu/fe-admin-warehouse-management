@@ -9,5 +9,6 @@ export const ROUTES = {
   MASTER_DATA: {
     CATEGORY: () => `/master-data/category`,
     PRODUCT: () => `/master-data/product`,
+    CREATE_PRODUCT: () => `/master-data/product/new`,
   },
 };

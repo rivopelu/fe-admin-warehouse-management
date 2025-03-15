@@ -10,6 +10,8 @@ import { IResListProduct } from '../../../types/response/IResListProduct.ts';
 import Flex from '../../../components/atoms/Flex.tsx';
 import IconButton from '../../../components/atoms/IconButton.tsx';
 import { MdInfo } from 'react-icons/md';
+import Button from '../../../components/atoms/Button.tsx';
+import { Link } from 'react-router-dom';
 
 export default function ProductPage() {
   const page = useProductPage();
@@ -55,7 +57,12 @@ export default function ProductPage() {
 
   return (
     <PageContainer>
-      <PageTitle title={t('product_management')} breadcrumb={breadcrumbData} />
+      <Flex justify={'between'}>
+        <PageTitle title={t('product_management')} breadcrumb={breadcrumbData} />
+        <Link to={ROUTES.MASTER_DATA.CREATE_PRODUCT()}>
+          <Button>{t('create_new_product')}</Button>
+        </Link>
+      </Flex>
       <Table data={page.dataList} loading={page.loadingPage} column={tableColumn} />
     </PageContainer>
   );

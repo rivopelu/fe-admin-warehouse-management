@@ -10,6 +10,7 @@ import { PRIVILEGE } from '../enums/privilege-enum.ts';
 import SettingPagePrivilegesPage from '../pages/settings/SettingPagePrivilegesPage.tsx';
 import CategoryPage from '../pages/master-data/category/CategoryPage.tsx';
 import ProductPage from '../pages/master-data/product/ProductPage.tsx';
+import CreateEditProductPage from '../pages/master-data/product/CreateEditProductPage.tsx';
 
 export const routesList: IRouteList[] = [
   {
@@ -57,6 +58,11 @@ export const routesList: IRouteList[] = [
     route: ROUTES.MASTER_DATA.PRODUCT(),
     type: PAGE_TYPE_ENUM.PRIMARY,
     elements: ProductPage,
+  },
+  {
+    route: ROUTES.MASTER_DATA.CREATE_PRODUCT(),
+    type: PAGE_TYPE_ENUM.PRIMARY,
+    elements: CreateEditProductPage,
   },
 ];
 
