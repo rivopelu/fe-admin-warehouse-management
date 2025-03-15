@@ -8,15 +8,54 @@ import getCroppedImg from '../../utils/cropper-utils.ts';
 import toast from 'react-hot-toast';
 import { t } from 'i18next';
 import Slider from '../atoms/Slider.tsx';
+import axios from 'axios';
+import { ENV } from '../../constants/env.ts';
 
 export default function UploadBoxCropperArea(props: IProps) {
+  const URL_UPLOAD = ENV.URL_UPLOAD;
   const [aspectSet] = useState<number>(props.ratio || 1);
   const [zoom, setZoom] = useState<number>(1);
   const [crop, setCrop] = useState<Point>({ x: 0, y: 0 });
   const [fileCrop, setFileCrop] = useState<any | null>(null);
   const [cropper, setCropper] = useState<Area | null>(null);
-
+  const [loadingUpload, setLoadingUpload] = useState<boolean>(false);
   const inputRef: any = useRef(null);
+
+  const uploadProcess = async (files: Blob, type: 'WATERMARK' | 'ORIGINAL') => {
+    setLoadingUpload(true);
+    try {
+      if (files) {
+        const formData: FormData = new FormData();
+        const fileToUpload = files;
+
+        formData.append('file', fileToUpload);
+        await axios
+          .post(
+            ENV.ENDPOINT + (type === 'WATERMARK' ? ENDPOINT.UPLOAD.WITH_WATERMARK : ENDPOINT.UPLOAD.ORIGINAL),
+            formData,
+          )
+          .then((res: AxiosResponse) => {
+            setLoadingUpload(false);
+            if (props.onChange) {
+              if (type === 'WATERMARK') {
+                props.onChange(res?.data?.response_data?.url);
+              } else {
+                props.onChaneOriginal && props.onChaneOriginal(res?.data?.response_data?.url);
+              }
+            }
+          })
+          .catch((e) => {
+            errorService.fetchApiError(e);
+            setLoadingUpload(false);
+          });
+      } else {
+        setLoadingUpload(false);
+      }
+    } catch (error) {
+      setLoadingUpload(false);
+      console.error('Error during image compression:', error);
+    }
+  };
 
   const showCropper = useCallback(async () => {
     try {
