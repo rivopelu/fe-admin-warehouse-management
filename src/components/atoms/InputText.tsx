@@ -30,7 +30,7 @@ export default function InputText(props: IProps) {
           type={props.type || 'text'}
           placeholder={props.placeholder || ''}
           className={twMerge(
-            'h-[40px] px-3 w-full duration-300 bg-white outline-2 outline-gray-300 rounded-md',
+            'h-field-height px-3 w-full duration-300 bg-white outline-2 outline-gray-300 rounded-md',
             'focus:outline-black/50 ',
             props.startIcon ? 'pl-9' : '',
             props.endIcon ? 'pr-9' : '',

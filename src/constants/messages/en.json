@@ -57,5 +57,6 @@
   "create_product" : "Create product",
   "insert_product_data" : "insert product data",
   "product_name" : "product name",
-  "insert_product_name" : "insert product name"
+  "insert_product_name" : "insert product name",
+  "select_category" : "select category"
 }

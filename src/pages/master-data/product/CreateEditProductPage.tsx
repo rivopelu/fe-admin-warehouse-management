@@ -10,6 +10,8 @@ import InputText from '../../../components/atoms/InputText.tsx';
 import { useCreateEditProductPage } from './useCreateEditProductPage.ts';
 import UploadBoxCropperArea from '../../../components/molecules/UploadBoxCropperArea.tsx';
 import Grid from '../../../components/atoms/Grid.tsx';
+import InputSelect from '../../../components/atoms/InputSelect.tsx';
+import Button from '../../../components/atoms/Button.tsx';
 
 export default function CreateEditProductPage() {
   const page = useCreateEditProductPage();
@@ -55,6 +57,15 @@ export default function CreateEditProductPage() {
                   placeholder={t('insert_product_name')}
                   required
                 />
+                <InputSelect
+                  required
+                  label={t('category')}
+                  placeholder={t('select_category')}
+                  options={page.listCategories}
+                  name={'category_id'}
+                />
+                <div className={'h-4'}></div>
+                <Button>{t('submit')}</Button>
               </Grid>
             </form>
           </FormikProvider>

@@ -43,7 +43,7 @@ export default function Button(props: IProps) {
       case 'sm':
         return 'h-[32px] text-sm px-3';
       default:
-        return 'h-[40px] px-3';
+        return 'h-field-height px-3';
     }
   }
 
@@ -53,7 +53,7 @@ export default function Button(props: IProps) {
       type={props.type}
       disabled={props.disable}
       className={twMerge(
-        'border-2 w-full duration-200 cursor-pointer font-semibold',
+        'border-2 w-full duration-200 cursor-pointer ',
         checkVariant(),
         checkRounded(),
         checkSize(),
