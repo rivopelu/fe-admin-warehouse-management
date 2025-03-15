@@ -11,9 +11,11 @@ export function PageTitle(props: IProps) {
             <div key={i} className={'flex items-center '}>
               <>
                 {props.breadcrumb && props.breadcrumb?.length - 1 !== i ? (
-                  <Link to={item?.path || ''}>{item.label}</Link>
+                  <Link className={'capitalize'} to={item?.path || ''}>
+                    {item.label}
+                  </Link>
                 ) : (
-                  <div className={'text-black'}>{item.label}</div>
+                  <div className={'text-black capitalize'}>{item.label}</div>
                 )}
               </>
               {props.breadcrumb && i !== props?.breadcrumb.length - 1 && (

@@ -10,7 +10,7 @@ function TopBar() {
   const auth = useAuth();
 
   return (
-    <div className={'h-top-bar-height '}>
+    <div className={'h-top-bar-height bg-white border-b '}>
       <div className={'w-full h-full'}>
         <PageContainer className={'h-full flex justify-between  items-center'}>
           <div>

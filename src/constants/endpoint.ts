@@ -14,4 +14,5 @@ export const ENDPOINT = {
   DETAIL_WAREHOUSE: (id: string) => `/warehouse/v1/detail/${id}`,
   EDIT_WAREHOUSE: (id: string) => `/warehouse/v1/edit/${id}`,
   LIST_ALL_CATEGORY: () => `/master-data/v1/category/list`,
+  LIST_PRODUCT: () => `/master-data/v1/product/list`,
 };
