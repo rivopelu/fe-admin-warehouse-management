@@ -12,6 +12,7 @@ import UploadBoxCropperArea from '../../../components/molecules/UploadBoxCropper
 import Grid from '../../../components/atoms/Grid.tsx';
 import InputSelect from '../../../components/atoms/InputSelect.tsx';
 import Button from '../../../components/atoms/Button.tsx';
+import Checkbox from '../../../components/atoms/Checkbox.tsx';
 
 export default function CreateEditProductPage() {
   const page = useCreateEditProductPage();
@@ -68,7 +69,18 @@ export default function CreateEditProductPage() {
                   name={'category_id'}
                 />
                 <div className={'h-4'}></div>
-                <Button onClick={() => page.formik.handleSubmit()}>{t('submit')}</Button>
+                <Checkbox
+                  label={t('confirmation.create_product')}
+                  onChange={(e) => page.setCheckedConfirmation(e)}
+                  value={page.checkedConfirmation}
+                />
+                <Button
+                  loading={page.loadingCreate}
+                  disable={page.checkDisableButton()}
+                  onClick={() => page.formik.handleSubmit()}
+                >
+                  {t('submit')}
+                </Button>
               </Grid>
             </form>
           </FormikProvider>

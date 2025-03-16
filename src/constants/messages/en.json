@@ -14,7 +14,8 @@
   },
   "confirmation" : {
     "title_create_warehouse" : "Are you sure create a new warehouse?",
-    "title_edit_warehouse" : "Are you sure edit warehouse?"
+    "title_edit_warehouse" : "Are you sure edit warehouse?",
+    "create_product" : "Are your sure to create a new product ?"
   },
   "email" : "email",
   "insert_email" : "insert email",
@@ -59,5 +60,6 @@
   "insert_product_data" : "insert product data",
   "product_name" : "product name",
   "insert_product_name" : "insert product name",
-  "select_category" : "select category"
+  "select_category" : "select category",
+  "product_success_created" : "Product success created"
 }
