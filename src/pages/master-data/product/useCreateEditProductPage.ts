@@ -10,7 +10,6 @@ import { HttpService } from '../../../services/http.service.ts';
 import { ENDPOINT } from '../../../constants/endpoint.ts';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
-import { ROUTES } from '../../../routes/routes.ts';
 import ErrorService from '../../../services/error.service.ts';
 
 export function useCreateEditProductPage() {
@@ -63,7 +62,7 @@ export function useCreateEditProductPage() {
           .then(() => {
             toast.success(t('product_success_created'));
             setLoadingCreate(false);
-            navigate(ROUTES.MASTER_DATA.PRODUCT());
+            navigate(-1);
           })
           .catch((e) => {
             errorService.fetchApiError(e);

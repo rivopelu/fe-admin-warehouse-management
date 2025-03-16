@@ -10,5 +10,6 @@ export const ROUTES = {
     CATEGORY: () => `/master-data/category`,
     PRODUCT: () => `/master-data/product`,
     CREATE_PRODUCT: () => `/master-data/product/new`,
+    DETAIL_PRODUCT: (id: string) => `/master-data/product/detail/${id}`,
   },
 };

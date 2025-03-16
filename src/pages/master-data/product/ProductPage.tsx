@@ -45,12 +45,12 @@ export default function ProductPage() {
       headerTitle: t('category'),
     },
     {
-      component: () => (
-        <div>
+      component: (data) => (
+        <Link to={ROUTES.MASTER_DATA.DETAIL_PRODUCT(data.id)}>
           <IconButton>
             <MdInfo />
           </IconButton>
-        </div>
+        </Link>
       ),
     },
   ];

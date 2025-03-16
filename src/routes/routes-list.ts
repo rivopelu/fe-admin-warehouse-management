@@ -11,6 +11,7 @@ import SettingPagePrivilegesPage from '../pages/settings/SettingPagePrivilegesPa
 import CategoryPage from '../pages/master-data/category/CategoryPage.tsx';
 import ProductPage from '../pages/master-data/product/ProductPage.tsx';
 import CreateEditProductPage from '../pages/master-data/product/CreateEditProductPage.tsx';
+import DetailProductPage from '../pages/master-data/product/DetailProductPage.tsx';
 
 export const routesList: IRouteList[] = [
   {
@@ -63,6 +64,11 @@ export const routesList: IRouteList[] = [
     route: ROUTES.MASTER_DATA.CREATE_PRODUCT(),
     type: PAGE_TYPE_ENUM.PRIMARY,
     elements: CreateEditProductPage,
+  },
+  {
+    route: ROUTES.MASTER_DATA.DETAIL_PRODUCT(':id'),
+    type: PAGE_TYPE_ENUM.PRIMARY,
+    elements: DetailProductPage,
   },
 ];
 
