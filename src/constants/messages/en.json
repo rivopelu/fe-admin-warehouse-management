@@ -61,5 +61,7 @@
   "product_name" : "product name",
   "insert_product_name" : "insert product name",
   "select_category" : "select category",
-  "product_success_created" : "Product success created"
+  "product_success_created" : "Product success created",
+  "detail_product" : "detail product",
+  "create_new_variant" : "create new variant"
 }

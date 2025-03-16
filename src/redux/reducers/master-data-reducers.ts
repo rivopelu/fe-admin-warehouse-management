@@ -4,12 +4,14 @@ import { createSlice } from '@reduxjs/toolkit';
 import { IResRolePrivileges } from '../../types/response/IResRolePrivileges.ts';
 import { IResListCategory } from '../../types/response/IResListCategory.ts';
 import { IResListProduct } from '../../types/response/IResListProduct.ts';
+import { IResDetailProduct } from '../../types/response/IResDetailProduct.ts';
 
 export interface IMasterDataReducer {
   listPrivileges?: IPayloadData<PRIVILEGE[]>;
   rolePrivileges?: IPayloadData<IResRolePrivileges[]>;
   listAllCategory?: IPayloadData<IResListCategory[]>;
   listProduct?: IPayloadDataPaginated<IResListProduct[]>;
+  detailProduct?: IPayloadData<IResDetailProduct>;
 }
 
 const initState: IMasterDataReducer = {};
@@ -29,6 +31,9 @@ export const MasterDataSlice = createSlice({
     },
     listProduct: (state: IMasterDataReducer, action: BasePayloadPaginated<IResListProduct[]>) => {
       state.listProduct = action.payload;
+    },
+    detailProduct: (state: IMasterDataReducer, action: BasePayload<IResDetailProduct>) => {
+      state.detailProduct = action.payload;
     },
   },
 });

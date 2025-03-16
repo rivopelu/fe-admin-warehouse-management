@@ -7,6 +7,7 @@ import { PRIVILEGE } from '../../enums/privilege-enum.ts';
 import { IResRolePrivileges } from '../../types/response/IResRolePrivileges.ts';
 import { IResListCategory } from '../../types/response/IResListCategory.ts';
 import { IResListProduct } from '../../types/response/IResListProduct.ts';
+import { IResDetailProduct } from '../../types/response/IResDetailProduct.ts';
 
 export class MasterDataActions extends BaseActions {
   private action = MasterDataSlice.actions;
@@ -73,6 +74,21 @@ export class MasterDataActions extends BaseActions {
         .catch((e) => {
           this.errorService.fetchApiError(e);
           dispatch(this.action.listRolePrivileges({ loading: false, data: undefined }));
+        });
+    };
+  }
+
+  getDetailProduct(id: string) {
+    return async (dispatch: Dispatch) => {
+      dispatch(this.action.detailProduct({ loading: true, data: undefined }));
+      await this.httpService
+        .GET(ENDPOINT.DETAIL_PRODUCT(id))
+        .then((res: BaseResponse<IResDetailProduct>) => {
+          dispatch(this.action.detailProduct({ loading: false, data: res.data.response_data }));
+        })
+        .catch((e) => {
+          dispatch(this.action.detailProduct({ loading: false, data: undefined }));
+          this.errorService.fetchApiError(e);
         });
     };
   }
