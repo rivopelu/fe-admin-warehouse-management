@@ -18,7 +18,7 @@ export function useCreateEditProductPage() {
   const masterDataAction = new MasterDataActions();
   const MasterData = useAppSelector((state) => state.MasterData);
   const httpService = new HttpService();
-  const erroService = new ErrorService();
+  const errorService = new ErrorService();
   const navigate = useNavigate();
 
   const [loadingCreate, setLoadingCreate] = useState<boolean>(false);
@@ -66,7 +66,7 @@ export function useCreateEditProductPage() {
             navigate(ROUTES.MASTER_DATA.PRODUCT());
           })
           .catch((e) => {
-            erroService.fetchApiError(e);
+            errorService.fetchApiError(e);
             setLoadingCreate(false);
           });
       }
