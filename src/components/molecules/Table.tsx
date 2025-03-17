@@ -12,7 +12,7 @@ function Table(props: IProps) {
   }
 
   return (
-    <table className="table-auto bg-white border">
+    <table className="table-auto bg-white border w-full">
       <thead className={'border-b'}>
         <tr>
           {props.column.map((header, i) => (

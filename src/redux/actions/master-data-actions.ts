@@ -8,9 +8,25 @@ import { IResRolePrivileges } from '../../types/response/IResRolePrivileges.ts';
 import { IResListCategory } from '../../types/response/IResListCategory.ts';
 import { IResListProduct } from '../../types/response/IResListProduct.ts';
 import { IResDetailProduct } from '../../types/response/IResDetailProduct.ts';
+import { IResListVariantProduct } from '../../types/response/IResListVariantProduct.ts';
 
 export class MasterDataActions extends BaseActions {
   private action = MasterDataSlice.actions;
+
+  getListProductVariant(productId: string) {
+    return async (dispatch: Dispatch) => {
+      dispatch(this.action.listProductVariant({ loading: true, data: undefined }));
+      await this.httpService
+        .GET(ENDPOINT.LIST_VARIANT_PRODUCT(productId))
+        .then((res: BaseResponse<IResListVariantProduct[]>) => {
+          dispatch(this.action.listProductVariant({ loading: false, data: res.data.response_data }));
+        })
+        .catch((e) => {
+          this.errorService.fetchApiError(e);
+          dispatch(this.action.listProductVariant({ loading: false, data: undefined }));
+        });
+    };
+  }
 
   getListProduct(param?: string) {
     return async (dispatch: Dispatch) => {

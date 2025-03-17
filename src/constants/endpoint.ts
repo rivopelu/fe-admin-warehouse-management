@@ -17,4 +17,5 @@ export const ENDPOINT = {
   LIST_PRODUCT: () => `/master-data/v1/product/list`,
   CREATE_PRODUCT: () => `/master-data/v1/product/new`,
   DETAIL_PRODUCT: (id: string) => `/master-data/v1/product/detail/${id}`,
+  LIST_VARIANT_PRODUCT: (id: string) => `/master-data/v1/product/variant/list/${id}`,
 };

@@ -5,6 +5,7 @@ import { IResRolePrivileges } from '../../types/response/IResRolePrivileges.ts';
 import { IResListCategory } from '../../types/response/IResListCategory.ts';
 import { IResListProduct } from '../../types/response/IResListProduct.ts';
 import { IResDetailProduct } from '../../types/response/IResDetailProduct.ts';
+import { IResListVariantProduct } from '../../types/response/IResListVariantProduct.ts';
 
 export interface IMasterDataReducer {
   listPrivileges?: IPayloadData<PRIVILEGE[]>;
@@ -12,6 +13,7 @@ export interface IMasterDataReducer {
   listAllCategory?: IPayloadData<IResListCategory[]>;
   listProduct?: IPayloadDataPaginated<IResListProduct[]>;
   detailProduct?: IPayloadData<IResDetailProduct>;
+  listProductVariant?: IPayloadData<IResListVariantProduct[]>;
 }
 
 const initState: IMasterDataReducer = {};
@@ -34,6 +36,9 @@ export const MasterDataSlice = createSlice({
     },
     detailProduct: (state: IMasterDataReducer, action: BasePayload<IResDetailProduct>) => {
       state.detailProduct = action.payload;
+    },
+    listProductVariant: (state: IMasterDataReducer, action: BasePayload<IResListVariantProduct[]>) => {
+      state.listProductVariant = action.payload;
     },
   },
 });

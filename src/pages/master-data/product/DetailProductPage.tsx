@@ -5,9 +5,25 @@ import Flex from '../../../components/atoms/Flex.tsx';
 import { PageTitle } from '../../../components/atoms/PageTitle.tsx';
 import { t } from 'i18next';
 import Button from '../../../components/atoms/Button.tsx';
+import { ITableColumn } from '../../../types/data/ITableColumn.ts';
+import { IResListVariantProduct } from '../../../types/response/IResListVariantProduct.ts';
+import Table from '../../../components/molecules/Table.tsx';
 
 export default function DetailProductPage() {
   const page = useDetailProductPage();
+
+  const tableColumn: ITableColumn<IResListVariantProduct>[] = [
+    {
+      headerTitle: t('name'),
+      component: (data) => (
+        <Flex gap={'md'}>
+          <img src={data.image_url} alt={data.name} className={'h-24 aspect-square'} />
+          <div>{data.name}</div>
+        </Flex>
+      ),
+    },
+  ];
+
   return (
     <PageContainer>
       <Flex justify={'between'}>
@@ -28,6 +44,7 @@ export default function DetailProductPage() {
           </Flex>
         </CardBody>
       </Card>
+      <Table data={page.listVariant} column={tableColumn} />
     </PageContainer>
   );
 }
